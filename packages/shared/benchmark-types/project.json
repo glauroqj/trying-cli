@@ -1,0 +1,16 @@
+{
+  "name": "benchmark-types",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/shared/benchmark-types/src",
+  "projectType": "library",
+  "tags": ["type:shared", "scope:shared"],
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run",
+        "cwd": "packages/shared/benchmark-types"
+      }
+    }
+  }
+}

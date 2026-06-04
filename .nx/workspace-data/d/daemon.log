@@ -1,0 +1,12 @@
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.889Z - Started listening on: /private/var/folders/51/qcgkwz4j5cd5hp8rdv7pcyjc0000gq/T/49064634e02242df17a1/d.sock
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.890Z - [WATCHER]: Subscribed to changes within: /Users/glauro.juliani/Documents/personal/trying-cli (native)
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.893Z - Established a connection. Number of open connections: 1
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.893Z - Established a connection. Number of open connections: 2
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.894Z - Closed a connection. Number of open connections: 1
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.894Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.894Z - Done responding to the client Shutdown initiated
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.894Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 0.
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.896Z - [WATCHER]: Stopping the watcher for /Users/glauro.juliani/Documents/personal/trying-cli (sources)
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.896Z - Closed a connection. Number of open connections: 0
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.896Z - [WATCHER]: Stopping the watcher for /Users/glauro.juliani/Documents/personal/trying-cli (outputs)
+[NX v20.8.1 Daemon Server] - 2026-06-04T14:23:37.896Z - Server stopped because: "Request to shutdown"

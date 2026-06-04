@@ -1,0 +1,7 @@
+{
+  "name": "feature-cli-04",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/feature-cli-04/src",
+  "projectType": "library",
+  "tags": ["type:feature", "scope:feature", "domain:cli-04"]
+}

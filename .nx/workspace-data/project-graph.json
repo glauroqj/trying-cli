@@ -1,0 +1,1084 @@
+{
+  "nodes": {
+    "benchmark-types": {
+      "name": "benchmark-types",
+      "type": "lib",
+      "data": {
+        "root": "packages/shared/benchmark-types",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "packages/shared/benchmark-types",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{workspaceRoot}/node_modules",
+              "!{workspaceRoot}/tmp",
+              "!{workspaceRoot}/dist",
+              "!{projectRoot}/src/**/*.spec.ts",
+              "!{projectRoot}/vite.config.ts",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/out-tsc/packages/shared/benchmark-types/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/packages/shared/benchmark-types/packages/shared/benchmark-types/*.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "vitest run",
+              "cwd": "packages/shared/benchmark-types"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "inputs": [
+              "default",
+              "^production"
+            ],
+            "cache": true
+          }
+        },
+        "name": "benchmark-types",
+        "tags": [
+          "npm:private",
+          "type:shared",
+          "scope:shared"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@trying-cli/benchmark-types",
+            "packageExports": {
+              ".": "./src/index.ts"
+            },
+            "packageMain": "./src/index.ts",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/shared/benchmark-types/src",
+        "implicitDependencies": []
+      }
+    },
+    "feature-benchmark-core": {
+      "name": "feature-benchmark-core",
+      "type": "lib",
+      "data": {
+        "root": "packages/feature-benchmark-core",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "packages/feature-benchmark-core",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{workspaceRoot}/node_modules",
+              "!{workspaceRoot}/tmp",
+              "!{workspaceRoot}/dist",
+              "!{projectRoot}/src/**/*.spec.ts",
+              "!{projectRoot}/vite.config.ts",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/out-tsc/packages/feature-benchmark-core/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/packages/feature-benchmark-core/packages/feature-benchmark-core/*.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "vitest run",
+              "cwd": "packages/feature-benchmark-core"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "inputs": [
+              "default",
+              "^production"
+            ],
+            "cache": true
+          }
+        },
+        "name": "feature-benchmark-core",
+        "tags": [
+          "npm:private",
+          "type:feature",
+          "scope:feature",
+          "domain:benchmark"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@trying-cli/feature-benchmark-core",
+            "packageExports": {
+              ".": "./src/index.ts"
+            },
+            "packageMain": "./src/index.ts",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/feature-benchmark-core/src",
+        "implicitDependencies": []
+      }
+    },
+    "reporting": {
+      "name": "reporting",
+      "type": "lib",
+      "data": {
+        "root": "packages/shared/reporting",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "packages/shared/reporting",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{workspaceRoot}/node_modules",
+              "!{workspaceRoot}/tmp",
+              "!{workspaceRoot}/dist",
+              "!{projectRoot}/src/**/*.spec.ts",
+              "!{projectRoot}/vite.config.ts",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/out-tsc/packages/shared/reporting/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/packages/shared/reporting/packages/shared/reporting/*.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "vitest run",
+              "cwd": "packages/shared/reporting"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "inputs": [
+              "default",
+              "^production"
+            ],
+            "cache": true
+          }
+        },
+        "name": "reporting",
+        "tags": [
+          "npm:private",
+          "type:shared",
+          "scope:shared"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@trying-cli/reporting",
+            "packageExports": {
+              ".": "./src/index.ts"
+            },
+            "packageMain": "./src/index.ts",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/shared/reporting/src",
+        "implicitDependencies": []
+      }
+    },
+    "feature-cli-01": {
+      "name": "feature-cli-01",
+      "type": "lib",
+      "data": {
+        "root": "packages/feature-cli-01",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "packages/feature-cli-01",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{workspaceRoot}/node_modules",
+              "!{workspaceRoot}/tmp",
+              "!{workspaceRoot}/dist",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/out-tsc/packages/feature-cli-01/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/packages/feature-cli-01/packages/feature-cli-01/*.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "feature-cli-01",
+        "tags": [
+          "npm:private",
+          "type:feature",
+          "scope:feature",
+          "domain:cli-01"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@trying-cli/feature-cli-01",
+            "packageExports": {
+              ".": "./src/index.ts"
+            },
+            "packageMain": "./src/index.ts",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/feature-cli-01/src",
+        "implicitDependencies": []
+      }
+    },
+    "feature-cli-02": {
+      "name": "feature-cli-02",
+      "type": "lib",
+      "data": {
+        "root": "packages/feature-cli-02",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "packages/feature-cli-02",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{workspaceRoot}/node_modules",
+              "!{workspaceRoot}/tmp",
+              "!{workspaceRoot}/dist",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/out-tsc/packages/feature-cli-02/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/packages/feature-cli-02/packages/feature-cli-02/*.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "feature-cli-02",
+        "tags": [
+          "npm:private",
+          "type:feature",
+          "scope:feature",
+          "domain:cli-02"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@trying-cli/feature-cli-02",
+            "packageExports": {
+              ".": "./src/index.ts"
+            },
+            "packageMain": "./src/index.ts",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/feature-cli-02/src",
+        "implicitDependencies": []
+      }
+    },
+    "feature-cli-03": {
+      "name": "feature-cli-03",
+      "type": "lib",
+      "data": {
+        "root": "packages/feature-cli-03",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "packages/feature-cli-03",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{workspaceRoot}/node_modules",
+              "!{workspaceRoot}/tmp",
+              "!{workspaceRoot}/dist",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/out-tsc/packages/feature-cli-03/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/packages/feature-cli-03/packages/feature-cli-03/*.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "feature-cli-03",
+        "tags": [
+          "npm:private",
+          "type:feature",
+          "scope:feature",
+          "domain:cli-03"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@trying-cli/feature-cli-03",
+            "packageExports": {
+              ".": "./src/index.ts"
+            },
+            "packageMain": "./src/index.ts",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/feature-cli-03/src",
+        "implicitDependencies": []
+      }
+    },
+    "feature-cli-04": {
+      "name": "feature-cli-04",
+      "type": "lib",
+      "data": {
+        "root": "packages/feature-cli-04",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "packages/feature-cli-04",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{workspaceRoot}/node_modules",
+              "!{workspaceRoot}/tmp",
+              "!{workspaceRoot}/dist",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/out-tsc/packages/feature-cli-04/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/packages/feature-cli-04/packages/feature-cli-04/*.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "feature-cli-04",
+        "tags": [
+          "npm:private",
+          "type:feature",
+          "scope:feature",
+          "domain:cli-04"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@trying-cli/feature-cli-04",
+            "packageExports": {
+              ".": "./src/index.ts"
+            },
+            "packageMain": "./src/index.ts",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/feature-cli-04/src",
+        "implicitDependencies": []
+      }
+    },
+    "feature-cli-05": {
+      "name": "feature-cli-05",
+      "type": "lib",
+      "data": {
+        "root": "packages/feature-cli-05",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "packages/feature-cli-05",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{workspaceRoot}/node_modules",
+              "!{workspaceRoot}/tmp",
+              "!{workspaceRoot}/dist",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/out-tsc/packages/feature-cli-05/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/packages/feature-cli-05/packages/feature-cli-05/*.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "feature-cli-05",
+        "tags": [
+          "npm:private",
+          "type:feature",
+          "scope:feature",
+          "domain:cli-05"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@trying-cli/feature-cli-05",
+            "packageExports": {
+              ".": "./src/index.ts"
+            },
+            "packageMain": "./src/index.ts",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/feature-cli-05/src",
+        "implicitDependencies": []
+      }
+    },
+    "exec": {
+      "name": "exec",
+      "type": "lib",
+      "data": {
+        "root": "packages/shared/exec",
+        "projectType": "library",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "packages/shared/exec",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.lib.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{workspaceRoot}/node_modules",
+              "!{workspaceRoot}/tmp",
+              "!{workspaceRoot}/dist",
+              "!{projectRoot}/src/**/*.spec.ts",
+              "!{projectRoot}/vite.config.ts",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/out-tsc/packages/shared/exec/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/packages/shared/exec/packages/shared/exec/*.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "vitest run",
+              "cwd": "packages/shared/exec"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "inputs": [
+              "default",
+              "^production"
+            ],
+            "cache": true
+          }
+        },
+        "name": "exec",
+        "tags": [
+          "npm:private",
+          "type:shared",
+          "scope:shared"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@trying-cli/exec",
+            "packageExports": {
+              ".": "./src/index.ts"
+            },
+            "packageMain": "./src/index.ts",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "packages/shared/exec/src",
+        "implicitDependencies": []
+      }
+    },
+    "cli-benchmark": {
+      "name": "cli-benchmark",
+      "type": "app",
+      "data": {
+        "root": "apps/cli-benchmark",
+        "projectType": "application",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "apps/cli-benchmark",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.app.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{workspaceRoot}/node_modules",
+              "!{workspaceRoot}/tmp",
+              "!{workspaceRoot}/dist",
+              "!{projectRoot}/src/**/*.spec.ts",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/apps/cli-benchmark/**/*.d.ts",
+              "{workspaceRoot}/dist/apps/*.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "options": {
+              "outputPath": "dist/apps/cli-benchmark",
+              "main": "apps/cli-benchmark/src/main.ts",
+              "tsConfig": "apps/cli-benchmark/tsconfig.app.json",
+              "assets": []
+            },
+            "configurations": {},
+            "parallelism": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ],
+            "cache": true
+          },
+          "benchmark": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "tsx apps/cli-benchmark/src/main.ts",
+              "cwd": ""
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "benchmark:dry": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "tsx apps/cli-benchmark/src/main.ts --dry-run",
+              "cwd": ""
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "eslint apps/cli-benchmark/src",
+              "cwd": ""
+            },
+            "configurations": {},
+            "parallelism": true,
+            "inputs": [
+              "default",
+              "{workspaceRoot}/eslint.config.js"
+            ],
+            "cache": true
+          }
+        },
+        "name": "cli-benchmark",
+        "tags": [
+          "npm:private",
+          "type:api",
+          "scope:host",
+          "domain:benchmark"
+        ],
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "@trying-cli/cli-benchmark",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/cli-benchmark/src",
+        "implicitDependencies": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "benchmark-types": [],
+    "feature-benchmark-core": [
+      {
+        "source": "feature-benchmark-core",
+        "target": "benchmark-types",
+        "type": "static"
+      },
+      {
+        "source": "feature-benchmark-core",
+        "target": "reporting",
+        "type": "static"
+      }
+    ],
+    "reporting": [
+      {
+        "source": "reporting",
+        "target": "benchmark-types",
+        "type": "static"
+      }
+    ],
+    "feature-cli-01": [
+      {
+        "source": "feature-cli-01",
+        "target": "benchmark-types",
+        "type": "static"
+      },
+      {
+        "source": "feature-cli-01",
+        "target": "exec",
+        "type": "static"
+      }
+    ],
+    "feature-cli-02": [
+      {
+        "source": "feature-cli-02",
+        "target": "benchmark-types",
+        "type": "static"
+      },
+      {
+        "source": "feature-cli-02",
+        "target": "exec",
+        "type": "static"
+      }
+    ],
+    "feature-cli-03": [
+      {
+        "source": "feature-cli-03",
+        "target": "benchmark-types",
+        "type": "static"
+      },
+      {
+        "source": "feature-cli-03",
+        "target": "exec",
+        "type": "static"
+      }
+    ],
+    "feature-cli-04": [
+      {
+        "source": "feature-cli-04",
+        "target": "benchmark-types",
+        "type": "static"
+      },
+      {
+        "source": "feature-cli-04",
+        "target": "exec",
+        "type": "static"
+      }
+    ],
+    "feature-cli-05": [
+      {
+        "source": "feature-cli-05",
+        "target": "benchmark-types",
+        "type": "static"
+      },
+      {
+        "source": "feature-cli-05",
+        "target": "exec",
+        "type": "static"
+      }
+    ],
+    "exec": [
+      {
+        "source": "exec",
+        "target": "benchmark-types",
+        "type": "static"
+      }
+    ],
+    "cli-benchmark": [
+      {
+        "source": "cli-benchmark",
+        "target": "benchmark-types",
+        "type": "static"
+      },
+      {
+        "source": "cli-benchmark",
+        "target": "feature-benchmark-core",
+        "type": "static"
+      },
+      {
+        "source": "cli-benchmark",
+        "target": "feature-cli-01",
+        "type": "static"
+      },
+      {
+        "source": "cli-benchmark",
+        "target": "feature-cli-02",
+        "type": "static"
+      },
+      {
+        "source": "cli-benchmark",
+        "target": "feature-cli-03",
+        "type": "static"
+      },
+      {
+        "source": "cli-benchmark",
+        "target": "feature-cli-04",
+        "type": "static"
+      },
+      {
+        "source": "cli-benchmark",
+        "target": "feature-cli-05",
+        "type": "static"
+      },
+      {
+        "source": "cli-benchmark",
+        "target": "reporting",
+        "type": "static"
+      }
+    ]
+  },
+  "version": "6.0",
+  "errors": [
+    {
+      "stack": " - eslint.config.js: Error: Cannot find module 'typescript-eslint'\nRequire stack:\n- /Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/flat-configs/typescript.js\n- /Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/index.js\n- /Users/glauro.juliani/Documents/personal/trying-cli/eslint.config.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)\n    at Function._load (node:internal/modules/cjs/loader:1192:37)\n    at TracingChannel.traceSync (node:diagnostics_channel:328:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)\n    at Module.require (node:internal/modules/cjs/loader:1463:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/flat-configs/typescript.js:6:53)\n    at Module._compile (node:internal/modules/cjs/loader:1706:14)",
+      "message": "An error occurred while processing files for the @nx/eslint/plugin plugin (Defined at nx.json#plugins[1])\n.\n  - eslint.config.js: Cannot find module 'typescript-eslint'\nRequire stack:\n- /Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/flat-configs/typescript.js\n- /Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/index.js\n- /Users/glauro.juliani/Documents/personal/trying-cli/eslint.config.js",
+      "errors": [
+        [
+          "eslint.config.js",
+          {
+            "stack": "Error: Cannot find module 'typescript-eslint'\nRequire stack:\n- /Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/flat-configs/typescript.js\n- /Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/index.js\n- /Users/glauro.juliani/Documents/personal/trying-cli/eslint.config.js\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)\n    at Function._load (node:internal/modules/cjs/loader:1192:37)\n    at TracingChannel.traceSync (node:diagnostics_channel:328:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)\n    at Module.require (node:internal/modules/cjs/loader:1463:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/flat-configs/typescript.js:6:53)\n    at Module._compile (node:internal/modules/cjs/loader:1706:14)",
+            "message": "Cannot find module 'typescript-eslint'\nRequire stack:\n- /Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/flat-configs/typescript.js\n- /Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/index.js\n- /Users/glauro.juliani/Documents/personal/trying-cli/eslint.config.js",
+            "code": "MODULE_NOT_FOUND",
+            "requireStack": [
+              "/Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/flat-configs/typescript.js",
+              "/Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/@nx+eslint-plugin@20.8.1_@babel+traverse@7.29.7_@swc-node+register@1.9.2_@swc+core@1.5.29_@sw_gk57olwb74ol27z77nmx2xefga/node_modules/@nx/eslint-plugin/src/index.js",
+              "/Users/glauro.juliani/Documents/personal/trying-cli/eslint.config.js"
+            ]
+          }
+        ]
+      ],
+      "partialResults": [],
+      "name": "AggregateCreateNodesError",
+      "pluginIndex": 1
+    }
+  ],
+  "computedAt": 1780583018632
+}

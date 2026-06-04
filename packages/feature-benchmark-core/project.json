@@ -1,0 +1,16 @@
+{
+  "name": "feature-benchmark-core",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/feature-benchmark-core/src",
+  "projectType": "library",
+  "tags": ["type:feature", "scope:feature", "domain:benchmark"],
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run",
+        "cwd": "packages/feature-benchmark-core"
+      }
+    }
+  }
+}

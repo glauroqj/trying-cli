@@ -1,0 +1,30 @@
+{
+  "name": "@trying-cli/source",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "benchmark": "nx run cli-benchmark:benchmark",
+    "benchmark:dry": "nx run cli-benchmark:benchmark:dry",
+    "lint": "nx run-many -t lint",
+    "test": "nx run-many -t test",
+    "build": "nx run-many -t build"
+  },
+  "devDependencies": {
+    "@nx/eslint": "20.8.1",
+    "@nx/eslint-plugin": "20.8.1",
+    "@nx/js": "20.8.1",
+    "@nx/node": "20.8.1",
+    "@nx/workspace": "20.8.1",
+    "@swc-node/register": "~1.9.2",
+    "@swc/core": "~1.5.29",
+    "@types/node": "22.13.10",
+    "@typescript-eslint/eslint-plugin": "8.28.0",
+    "@typescript-eslint/parser": "8.28.0",
+    "eslint": "9.23.0",
+    "nx": "20.8.1",
+    "typescript": "5.8.2",
+    "tsx": "4.19.3",
+    "vitest": "3.0.9"
+  }
+}

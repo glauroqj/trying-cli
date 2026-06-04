@@ -1,0 +1,40 @@
+{
+  "name": "cli-benchmark",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cli-benchmark/src",
+  "projectType": "application",
+  "tags": ["type:api", "scope:host", "domain:benchmark"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/cli-benchmark",
+        "main": "apps/cli-benchmark/src/main.ts",
+        "tsConfig": "apps/cli-benchmark/tsconfig.app.json",
+        "assets": []
+      }
+    },
+    "benchmark": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsx apps/cli-benchmark/src/main.ts",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "benchmark:dry": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsx apps/cli-benchmark/src/main.ts --dry-run",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint apps/cli-benchmark/src",
+        "cwd": "{workspaceRoot}"
+      }
+    }
+  }
+}

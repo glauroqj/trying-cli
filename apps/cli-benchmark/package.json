@@ -1,0 +1,16 @@
+{
+  "name": "@trying-cli/cli-benchmark",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@trying-cli/benchmark-types": "workspace:*",
+    "@trying-cli/feature-benchmark-core": "workspace:*",
+    "@trying-cli/feature-cli-01": "workspace:*",
+    "@trying-cli/feature-cli-02": "workspace:*",
+    "@trying-cli/feature-cli-03": "workspace:*",
+    "@trying-cli/feature-cli-04": "workspace:*",
+    "@trying-cli/feature-cli-05": "workspace:*",
+    "@trying-cli/reporting": "workspace:*"
+  }
+}

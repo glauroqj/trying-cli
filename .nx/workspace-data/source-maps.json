@@ -1,0 +1,1610 @@
+{
+  "apps/cli-benchmark": {
+    "root": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "apps/cli-benchmark/tsconfig.app.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "apps/cli-benchmark/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "name": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "apps/cli-benchmark/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "apps/cli-benchmark/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "apps/cli-benchmark/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "apps/cli-benchmark/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "apps/cli-benchmark/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "apps/cli-benchmark/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:api": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:host": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.domain:benchmark": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.main": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.benchmark": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.benchmark.executor": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.benchmark.options": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.benchmark.options.command": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.benchmark.options.cwd": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.benchmark:dry": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.benchmark:dry.executor": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.benchmark:dry.options": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.benchmark:dry.options.command": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.benchmark:dry.options.cwd": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.command": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.cwd": [
+      "apps/cli-benchmark/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/feature-benchmark-core": {
+    "root": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "packages/feature-benchmark-core/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "name": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/feature-benchmark-core/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "packages/feature-benchmark-core/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/feature-benchmark-core/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/feature-benchmark-core/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/feature-benchmark-core/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/feature-benchmark-core/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/feature-benchmark-core/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/feature-benchmark-core/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:feature": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:feature": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.domain:benchmark": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.command": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.cwd": [
+      "packages/feature-benchmark-core/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/feature-cli-01": {
+    "root": [
+      "packages/feature-cli-01/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/feature-cli-01/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "packages/feature-cli-01/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "name": [
+      "packages/feature-cli-01/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/feature-cli-01/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "packages/feature-cli-01/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/feature-cli-01/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/feature-cli-01/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/feature-cli-01/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/feature-cli-01/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/feature-cli-01/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/feature-cli-01/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/feature-cli-01/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/feature-cli-01/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:feature": [
+      "packages/feature-cli-01/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:feature": [
+      "packages/feature-cli-01/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.domain:cli-01": [
+      "packages/feature-cli-01/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "packages/feature-cli-02": {
+    "root": [
+      "packages/feature-cli-02/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/feature-cli-02/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "packages/feature-cli-02/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "name": [
+      "packages/feature-cli-02/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/feature-cli-02/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "packages/feature-cli-02/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/feature-cli-02/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/feature-cli-02/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/feature-cli-02/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/feature-cli-02/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/feature-cli-02/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/feature-cli-02/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/feature-cli-02/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/feature-cli-02/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:feature": [
+      "packages/feature-cli-02/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:feature": [
+      "packages/feature-cli-02/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.domain:cli-02": [
+      "packages/feature-cli-02/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "packages/feature-cli-03": {
+    "root": [
+      "packages/feature-cli-03/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/feature-cli-03/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "packages/feature-cli-03/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "name": [
+      "packages/feature-cli-03/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/feature-cli-03/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "packages/feature-cli-03/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/feature-cli-03/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/feature-cli-03/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/feature-cli-03/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/feature-cli-03/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/feature-cli-03/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/feature-cli-03/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/feature-cli-03/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/feature-cli-03/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:feature": [
+      "packages/feature-cli-03/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:feature": [
+      "packages/feature-cli-03/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.domain:cli-03": [
+      "packages/feature-cli-03/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "packages/feature-cli-04": {
+    "root": [
+      "packages/feature-cli-04/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/feature-cli-04/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "packages/feature-cli-04/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "name": [
+      "packages/feature-cli-04/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/feature-cli-04/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "packages/feature-cli-04/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/feature-cli-04/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/feature-cli-04/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/feature-cli-04/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/feature-cli-04/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/feature-cli-04/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/feature-cli-04/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/feature-cli-04/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/feature-cli-04/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:feature": [
+      "packages/feature-cli-04/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:feature": [
+      "packages/feature-cli-04/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.domain:cli-04": [
+      "packages/feature-cli-04/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "packages/feature-cli-05": {
+    "root": [
+      "packages/feature-cli-05/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/feature-cli-05/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "packages/feature-cli-05/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "name": [
+      "packages/feature-cli-05/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/feature-cli-05/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "packages/feature-cli-05/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/feature-cli-05/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/feature-cli-05/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/feature-cli-05/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/feature-cli-05/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/feature-cli-05/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/feature-cli-05/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/feature-cli-05/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/feature-cli-05/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:feature": [
+      "packages/feature-cli-05/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:feature": [
+      "packages/feature-cli-05/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.domain:cli-05": [
+      "packages/feature-cli-05/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "packages/shared/benchmark-types": {
+    "root": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "packages/shared/benchmark-types/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "name": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/shared/benchmark-types/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "packages/shared/benchmark-types/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/shared/benchmark-types/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/shared/benchmark-types/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/shared/benchmark-types/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/shared/benchmark-types/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/shared/benchmark-types/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/shared/benchmark-types/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:shared": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:shared": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.command": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.cwd": [
+      "packages/shared/benchmark-types/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/shared/exec": {
+    "root": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "packages/shared/exec/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "name": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/shared/exec/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "packages/shared/exec/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/shared/exec/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/shared/exec/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/shared/exec/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/shared/exec/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/shared/exec/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/shared/exec/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:shared": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:shared": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.command": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.cwd": [
+      "packages/shared/exec/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "packages/shared/reporting": {
+    "root": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "packages/shared/reporting/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "name": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/shared/reporting/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "packages/shared/reporting/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/shared/reporting/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/shared/reporting/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/shared/reporting/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/shared/reporting/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/shared/reporting/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/shared/reporting/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.type:shared": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "tags.scope:shared": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.command": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.cwd": [
+      "packages/shared/reporting/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  }
+}
