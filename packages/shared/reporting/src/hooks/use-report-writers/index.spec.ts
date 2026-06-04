@@ -8,7 +8,7 @@ const sampleReport: BenchmarkSuiteReport = {
   scenarios: [{ id: 's1', name: 'Test', prompt: 'hi' }],
   results: [
     {
-      adapterId: 'cli-01',
+      adapterId: 'cli-pastel',
       scenarioId: 's1',
       status: 'success',
       durationMs: 10,
@@ -27,6 +27,6 @@ describe('report writers', () => {
   it('renders markdown table', () => {
     const md = toMarkdown(sampleReport);
     expect(md).toContain('# Benchmark Report');
-    expect(md).toContain('| cli-01 | s1 | success | 10 |');
+    expect(md).toContain('| cli-pastel | s1 | success | 10 |');
   });
 });

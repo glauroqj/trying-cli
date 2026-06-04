@@ -4,11 +4,18 @@
   "private": true,
   "packageManager": "pnpm@9.15.9",
   "scripts": {
-    "benchmark": "nx run cli-benchmark:benchmark",
-    "benchmark:dry": "nx run cli-benchmark:benchmark:dry",
-    "lint": "nx run-many -t lint",
-    "test": "nx run-many -t test",
-    "build": "nx run-many -t build"
+    "cli": "tsx packages/feature-cli-commander-clack/src/bin.ts",
+    "cli:clack": "tsx packages/feature-cli-commander-clack/src/bin.ts",
+    "cli:pastel": "tsx packages/feature-cli-pastel/source/cli.tsx",
+    "cli:ink": "tsx packages/feature-cli-ink/src/bin.ts",
+    "benchmark": "NX_DAEMON=false nx run cli-benchmark:benchmark",
+    "benchmark:dry": "NX_DAEMON=false nx run cli-benchmark:benchmark:dry",
+    "benchmark:tsx": "tsx apps/cli-benchmark/src/main.ts",
+    "benchmark:tsx:dry": "tsx apps/cli-benchmark/src/main.ts --dry-run",
+    "lint": "NX_DAEMON=false nx run-many -t lint",
+    "test": "vitest run",
+    "validate:cli-smoke": "tsx tools/scripts/validate-cli-smoke.ts",
+    "build": "NX_DAEMON=false nx run-many -t build"
   },
   "devDependencies": {
     "@nx/eslint": "20.8.1",
@@ -23,8 +30,9 @@
     "@typescript-eslint/parser": "8.28.0",
     "eslint": "9.23.0",
     "nx": "20.8.1",
-    "typescript": "5.8.2",
     "tsx": "4.19.3",
+    "typescript": "5.8.2",
+    "typescript-eslint": "^8.60.1",
     "vitest": "3.0.9"
   }
 }

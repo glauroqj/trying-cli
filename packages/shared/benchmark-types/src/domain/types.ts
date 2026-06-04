@@ -1,16 +1,12 @@
 export type CliAdapterId =
-  | 'cli-01'
-  | 'cli-02'
-  | 'cli-03'
-  | 'cli-04'
-  | 'cli-05';
+  | 'cli-pastel'
+  | 'cli-commander-clack'
+  | 'cli-ink';
 
 export const CLI_ADAPTER_IDS: readonly CliAdapterId[] = [
-  'cli-01',
-  'cli-02',
-  'cli-03',
-  'cli-04',
-  'cli-05',
+  'cli-pastel',
+  'cli-commander-clack',
+  'cli-ink',
 ] as const;
 
 export interface BenchmarkScenario {

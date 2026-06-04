@@ -1,0 +1,767 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.8.1",
+  "pathMappings": {
+    "@trying-cli/benchmark-types": [
+      "packages/shared/benchmark-types/src/index.ts"
+    ],
+    "@trying-cli/exec": [
+      "packages/shared/exec/src/index.ts"
+    ],
+    "@trying-cli/agents-core": [
+      "packages/shared/agents-core/src/index.ts"
+    ],
+    "@trying-cli/reporting": [
+      "packages/shared/reporting/src/index.ts"
+    ],
+    "@trying-cli/feature-benchmark-core": [
+      "packages/feature-benchmark-core/src/index.ts"
+    ],
+    "@trying-cli/feature-cli-pastel": [
+      "packages/feature-cli-pastel/src/index.ts"
+    ],
+    "@trying-cli/feature-cli-commander-clack": [
+      "packages/feature-cli-commander-clack/src/index.ts"
+    ],
+    "@trying-cli/feature-cli-ink": [
+      "packages/feature-cli-ink/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        },
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
+        }
+      }
+    },
+    {
+      "name": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ],
+  "fileMap": {
+    "projectFileMap": {
+      "benchmark-types": [
+        {
+          "file": "packages/shared/benchmark-types/package.json",
+          "hash": "13585432857962289344"
+        },
+        {
+          "file": "packages/shared/benchmark-types/project.json",
+          "hash": "15293370114932887182"
+        },
+        {
+          "file": "packages/shared/benchmark-types/src/domain/constants.spec.ts",
+          "hash": "3709856078664006173",
+          "deps": [
+            "npm:vitest"
+          ]
+        },
+        {
+          "file": "packages/shared/benchmark-types/src/domain/constants.ts",
+          "hash": "9956591928272272250"
+        },
+        {
+          "file": "packages/shared/benchmark-types/src/domain/types.ts",
+          "hash": "8367284359929290278"
+        },
+        {
+          "file": "packages/shared/benchmark-types/src/index.ts",
+          "hash": "15654017619209009837"
+        },
+        {
+          "file": "packages/shared/benchmark-types/tsconfig.json",
+          "hash": "12859451443086759560"
+        },
+        {
+          "file": "packages/shared/benchmark-types/tsconfig.lib.json",
+          "hash": "17642748153558641595"
+        },
+        {
+          "file": "packages/shared/benchmark-types/vite.config.ts",
+          "hash": "9175357481409618457",
+          "deps": [
+            "npm:vitest"
+          ]
+        }
+      ],
+      "cli-benchmark": [
+        {
+          "file": "apps/cli-benchmark/package.json",
+          "hash": "7579924033148422209",
+          "deps": [
+            "benchmark-types",
+            "feature-benchmark-core",
+            "feature-cli-commander-clack",
+            "feature-cli-ink",
+            "feature-cli-pastel",
+            "reporting"
+          ]
+        },
+        {
+          "file": "apps/cli-benchmark/project.json",
+          "hash": "15886348606153178307"
+        },
+        {
+          "file": "apps/cli-benchmark/src/index.ts",
+          "hash": "8299766933214306753"
+        },
+        {
+          "file": "apps/cli-benchmark/src/main.ts",
+          "hash": "12672900447952227537",
+          "deps": [
+            "benchmark-types",
+            "feature-benchmark-core",
+            "reporting"
+          ]
+        },
+        {
+          "file": "apps/cli-benchmark/src/registry.ts",
+          "hash": "1903428486265636952",
+          "deps": [
+            "benchmark-types",
+            "feature-cli-pastel",
+            "feature-cli-commander-clack",
+            "feature-cli-ink"
+          ]
+        },
+        {
+          "file": "apps/cli-benchmark/tsconfig.app.json",
+          "hash": "14129052324390890278"
+        },
+        {
+          "file": "apps/cli-benchmark/tsconfig.json",
+          "hash": "18102713697859469189"
+        }
+      ],
+      "feature-cli-ink": [
+        {
+          "file": "packages/feature-cli-ink/README.md",
+          "hash": "8242445748858161737"
+        },
+        {
+          "file": "packages/feature-cli-ink/package.json",
+          "hash": "4893529920012902697",
+          "deps": [
+            "npm:@types/react",
+            "agents-core",
+            "benchmark-types",
+            "npm:ink",
+            "npm:ink-big-text",
+            "npm:ink-gradient",
+            "npm:ink-select-input",
+            "npm:ink-spinner",
+            "npm:ink-text-input",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-ink/project.json",
+          "hash": "15351551052456540036"
+        },
+        {
+          "file": "packages/feature-cli-ink/src/app/App.tsx",
+          "hash": "3565197568237332898",
+          "deps": [
+            "npm:react",
+            "npm:ink",
+            "npm:ink-select-input",
+            "npm:ink-text-input",
+            "npm:ink-spinner",
+            "agents-core"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-ink/src/app/components/ShimmerText.tsx",
+          "hash": "14452182357143718913",
+          "deps": [
+            "npm:react",
+            "npm:ink"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-ink/src/app/components/Welcome.tsx",
+          "hash": "9882871567098155859",
+          "deps": [
+            "npm:react",
+            "npm:ink",
+            "npm:ink-big-text",
+            "npm:ink-gradient",
+            "npm:ink-select-input",
+            "agents-core"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-ink/src/bin.ts",
+          "hash": "1641333677543804216"
+        },
+        {
+          "file": "packages/feature-cli-ink/src/domain/constants.ts",
+          "hash": "15700739899812658307",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-ink/src/hooks/use-benchmark-adapter/index.ts",
+          "hash": "10248025606161183143",
+          "deps": [
+            "benchmark-types",
+            "agents-core"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-ink/src/hooks/use-run-cli/index.ts",
+          "hash": "8333770723479745034"
+        },
+        {
+          "file": "packages/feature-cli-ink/src/index.ts",
+          "hash": "3756324280518836778",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-ink/src/main.tsx",
+          "hash": "6959888801374919087",
+          "deps": [
+            "npm:react",
+            "npm:ink"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-ink/tsconfig.json",
+          "hash": "4016995703834439707"
+        },
+        {
+          "file": "packages/feature-cli-ink/tsconfig.lib.json",
+          "hash": "499865554046153163"
+        }
+      ],
+      "agents-core": [
+        {
+          "file": "packages/shared/agents-core/assets/hooks/scaffold-hook/hooks.json",
+          "hash": "18443329049947344558"
+        },
+        {
+          "file": "packages/shared/agents-core/assets/skills/scaffold-skill/SKILL.md",
+          "hash": "10675796806790151438"
+        },
+        {
+          "file": "packages/shared/agents-core/package.json",
+          "hash": "17946956978259031538",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/shared/agents-core/project.json",
+          "hash": "7859080678962895138"
+        },
+        {
+          "file": "packages/shared/agents-core/src/domain/constants.ts",
+          "hash": "12634283047894877418"
+        },
+        {
+          "file": "packages/shared/agents-core/src/domain/flow-steps.ts",
+          "hash": "9593832538074648996"
+        },
+        {
+          "file": "packages/shared/agents-core/src/domain/hook-catalog.ts",
+          "hash": "14686560717954047954"
+        },
+        {
+          "file": "packages/shared/agents-core/src/domain/skill-catalog.ts",
+          "hash": "6158300094816700150"
+        },
+        {
+          "file": "packages/shared/agents-core/src/domain/types.ts",
+          "hash": "14882070432940310147"
+        },
+        {
+          "file": "packages/shared/agents-core/src/domain/welcome.ts",
+          "hash": "10717608545601862861"
+        },
+        {
+          "file": "packages/shared/agents-core/src/hooks/use-benchmark-smoke/index.ts",
+          "hash": "18026010601382639661",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/shared/agents-core/src/hooks/use-install/index.ts",
+          "hash": "12380167388343034074"
+        },
+        {
+          "file": "packages/shared/agents-core/src/hooks/use-path-guard/index.spec.ts",
+          "hash": "2260405296250640317",
+          "deps": [
+            "npm:vitest"
+          ]
+        },
+        {
+          "file": "packages/shared/agents-core/src/hooks/use-path-guard/index.ts",
+          "hash": "7786463101522043674"
+        },
+        {
+          "file": "packages/shared/agents-core/src/hooks/use-workspace-picker/index.spec.ts",
+          "hash": "12163347980521865621",
+          "deps": [
+            "npm:vitest"
+          ]
+        },
+        {
+          "file": "packages/shared/agents-core/src/hooks/use-workspace-picker/index.ts",
+          "hash": "6784386426018714680"
+        },
+        {
+          "file": "packages/shared/agents-core/src/hooks/use-workspace/index.spec.ts",
+          "hash": "7944338688726127254",
+          "deps": [
+            "npm:vitest"
+          ]
+        },
+        {
+          "file": "packages/shared/agents-core/src/hooks/use-workspace/index.ts",
+          "hash": "16557764789040840462"
+        },
+        {
+          "file": "packages/shared/agents-core/src/index.ts",
+          "hash": "8865268705059150940"
+        },
+        {
+          "file": "packages/shared/agents-core/tsconfig.json",
+          "hash": "3677706661341934928"
+        },
+        {
+          "file": "packages/shared/agents-core/tsconfig.lib.json",
+          "hash": "334782700440562082"
+        },
+        {
+          "file": "packages/shared/agents-core/vite.config.ts",
+          "hash": "15152647989998035947",
+          "deps": [
+            "npm:vitest"
+          ]
+        }
+      ],
+      "feature-cli-pastel": [
+        {
+          "file": "packages/feature-cli-pastel/README.md",
+          "hash": "8895802703643102642"
+        },
+        {
+          "file": "packages/feature-cli-pastel/package.json",
+          "hash": "2543318206678411504",
+          "deps": [
+            "npm:@types/react",
+            "agents-core",
+            "benchmark-types",
+            "npm:ink",
+            "npm:ink-big-text",
+            "npm:ink-gradient",
+            "npm:ink-select-input",
+            "npm:ink-spinner",
+            "npm:ink-text-input",
+            "npm:pastel",
+            "npm:react",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-pastel/project.json",
+          "hash": "8801764344347152707"
+        },
+        {
+          "file": "packages/feature-cli-pastel/source/app/PastelApp.tsx",
+          "hash": "14239577248778640141",
+          "deps": [
+            "npm:react",
+            "npm:ink",
+            "npm:ink-select-input",
+            "npm:ink-text-input",
+            "npm:ink-spinner",
+            "npm:ink-big-text",
+            "npm:ink-gradient",
+            "agents-core"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-pastel/source/cli.tsx",
+          "hash": "6988364189012723465",
+          "deps": [
+            "npm:pastel"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-pastel/source/commands/index.tsx",
+          "hash": "7435533368843826330",
+          "deps": [
+            "npm:react",
+            "npm:ink"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-pastel/src/domain/constants.ts",
+          "hash": "1073924336537679852",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-pastel/src/hooks/use-benchmark-adapter/index.ts",
+          "hash": "10248025606161183143",
+          "deps": [
+            "benchmark-types",
+            "agents-core"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-pastel/src/hooks/use-run-cli/index.ts",
+          "hash": "5357783447460171042",
+          "deps": [
+            "npm:pastel"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-pastel/src/index.ts",
+          "hash": "7233191785395833668",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-pastel/tsconfig.json",
+          "hash": "4016995703834439707"
+        },
+        {
+          "file": "packages/feature-cli-pastel/tsconfig.lib.json",
+          "hash": "6214310950856855479"
+        }
+      ],
+      "feature-benchmark-core": [
+        {
+          "file": "packages/feature-benchmark-core/README.md",
+          "hash": "4218551262770953321"
+        },
+        {
+          "file": "packages/feature-benchmark-core/package.json",
+          "hash": "1610346179510286848",
+          "deps": [
+            "benchmark-types",
+            "reporting"
+          ]
+        },
+        {
+          "file": "packages/feature-benchmark-core/project.json",
+          "hash": "12970352404544570136"
+        },
+        {
+          "file": "packages/feature-benchmark-core/src/hooks/use-benchmark-suite/index.spec.ts",
+          "hash": "12233783791418955968",
+          "deps": [
+            "benchmark-types",
+            "npm:vitest"
+          ]
+        },
+        {
+          "file": "packages/feature-benchmark-core/src/hooks/use-benchmark-suite/index.ts",
+          "hash": "1427148839792266707",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/feature-benchmark-core/src/index.ts",
+          "hash": "11775558256743691635",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/feature-benchmark-core/tsconfig.json",
+          "hash": "13448214906938575659"
+        },
+        {
+          "file": "packages/feature-benchmark-core/tsconfig.lib.json",
+          "hash": "10377137939518941565"
+        },
+        {
+          "file": "packages/feature-benchmark-core/vite.config.ts",
+          "hash": "4301780476524797458",
+          "deps": [
+            "npm:vitest"
+          ]
+        }
+      ],
+      "reporting": [
+        {
+          "file": "packages/shared/reporting/package.json",
+          "hash": "12940771404435593473",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/shared/reporting/project.json",
+          "hash": "2088815913503907579"
+        },
+        {
+          "file": "packages/shared/reporting/src/hooks/use-report-writers/index.spec.ts",
+          "hash": "4324511580578148516",
+          "deps": [
+            "benchmark-types",
+            "npm:vitest"
+          ]
+        },
+        {
+          "file": "packages/shared/reporting/src/hooks/use-report-writers/index.ts",
+          "hash": "12940435301951919414",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/shared/reporting/src/index.ts",
+          "hash": "4595310406767766935"
+        },
+        {
+          "file": "packages/shared/reporting/tsconfig.json",
+          "hash": "3677706661341934928"
+        },
+        {
+          "file": "packages/shared/reporting/tsconfig.lib.json",
+          "hash": "14525710668415446443"
+        },
+        {
+          "file": "packages/shared/reporting/vite.config.ts",
+          "hash": "7962921663638014682",
+          "deps": [
+            "npm:vitest"
+          ]
+        }
+      ],
+      "exec": [
+        {
+          "file": "packages/shared/exec/package.json",
+          "hash": "8159103486706172754",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/shared/exec/project.json",
+          "hash": "127838714305625155"
+        },
+        {
+          "file": "packages/shared/exec/src/hooks/use-timed-exec/index.spec.ts",
+          "hash": "8549354887021803103",
+          "deps": [
+            "npm:vitest"
+          ]
+        },
+        {
+          "file": "packages/shared/exec/src/hooks/use-timed-exec/index.ts",
+          "hash": "17964166424881995634"
+        },
+        {
+          "file": "packages/shared/exec/src/index.ts",
+          "hash": "10316961626122459202"
+        },
+        {
+          "file": "packages/shared/exec/tsconfig.json",
+          "hash": "3677706661341934928"
+        },
+        {
+          "file": "packages/shared/exec/tsconfig.lib.json",
+          "hash": "7601670904117483563"
+        },
+        {
+          "file": "packages/shared/exec/vite.config.ts",
+          "hash": "1740624034550849780",
+          "deps": [
+            "npm:vitest"
+          ]
+        }
+      ],
+      "feature-cli-commander-clack": [
+        {
+          "file": "packages/feature-cli-commander-clack/README.md",
+          "hash": "13349650700265951459"
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/package.json",
+          "hash": "15647922089449638332",
+          "deps": [
+            "npm:@clack/prompts",
+            "agents-core",
+            "benchmark-types",
+            "npm:commander",
+            "npm:picocolors"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/project.json",
+          "hash": "17625367197745601428"
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/src/bin.ts",
+          "hash": "15015162527229775097"
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/src/domain/constants.ts",
+          "hash": "6982900189585467188",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/src/flows/clack-workspace-port.ts",
+          "hash": "5030287281056759682",
+          "deps": [
+            "npm:@clack/prompts",
+            "agents-core"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/src/flows/run-interactive.ts",
+          "hash": "1990833536490744543",
+          "deps": [
+            "npm:@clack/prompts",
+            "npm:picocolors",
+            "agents-core",
+            [
+              "agents-core",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/src/flows/show-flow-step.ts",
+          "hash": "338004270420228261",
+          "deps": [
+            "npm:@clack/prompts",
+            "npm:picocolors",
+            "agents-core"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/src/flows/show-welcome.ts",
+          "hash": "1097770701347420990",
+          "deps": [
+            "npm:@clack/prompts",
+            "npm:picocolors",
+            "agents-core"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/src/hooks/use-benchmark-adapter/index.ts",
+          "hash": "8830250059657088805",
+          "deps": [
+            "benchmark-types",
+            "agents-core"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/src/hooks/use-run-cli/index.ts",
+          "hash": "11963566634581196032"
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/src/index.ts",
+          "hash": "546871858123918844",
+          "deps": [
+            "benchmark-types"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/src/program.ts",
+          "hash": "12309206044447298353",
+          "deps": [
+            "npm:commander"
+          ]
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/tsconfig.json",
+          "hash": "13448214906938575659"
+        },
+        {
+          "file": "packages/feature-cli-commander-clack/tsconfig.lib.json",
+          "hash": "13949377408634922680"
+        }
+      ]
+    },
+    "nonProjectFiles": [
+      {
+        "file": ".github/CODEOWNERS",
+        "hash": "149626529144754721"
+      },
+      {
+        "file": ".github/workflows/ci.yml",
+        "hash": "12455362174221066195"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "13138236416853985612"
+      },
+      {
+        "file": "README.md",
+        "hash": "11907507544522407222"
+      },
+      {
+        "file": "eslint.config.js",
+        "hash": "11636494715363423200"
+      },
+      {
+        "file": "nx.json",
+        "hash": "17207160437434634692"
+      },
+      {
+        "file": "package.json",
+        "hash": "9373696326096130907"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "10400682490563339295"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "1908060898080416554"
+      },
+      {
+        "file": "tools/generators/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "tools/scripts/seed-fixtures.ts",
+        "hash": "4488261419739747427"
+      },
+      {
+        "file": "tools/scripts/validate-cli-smoke.ts",
+        "hash": "10396383210047948825"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "5604569366942214289"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "2530239551698568359"
+      },
+      {
+        "file": "vitest.workspace.ts",
+        "hash": "2589484575110061428"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+Failed to start or connect to the Nx Daemon process.
+
+Messages from the log:
+Error: listen EPERM: operation not permitted /private/var/folders/51/qcgkwz4j5cd5hp8rdv7pcyjc0000gq/T/49064634e02242df17a1/d.sock
+    at Server.setupListenHandle [as _listen2] (node:net:1918:21)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2119:5)
+    at /Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/nx@20.8.1_@swc-node+register@1.9.2_@swc+core@1.5.29_@swc+types@0.1.26_typescript@5.8.2__@swc+core@1.5.29/node_modules/nx/src/daemon/server/server.js:368:20
+    at new Promise (<anonymous>)
+    at startServer (/Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/nx@20.8.1_@swc-node+register@1.9.2_@swc+core@1.5.29_@swc+types@0.1.26_typescript@5.8.2__@swc+core@1.5.29/node_modules/nx/src/daemon/server/server.js:366:12)
+    at async /Users/glauro.juliani/Documents/personal/trying-cli/node_modules/.pnpm/nx@20.8.1_@swc-node+register@1.9.2_@swc+core@1.5.29_@swc+types@0.1.26_typescript@5.8.2__@swc+core@1.5.29/node_modules/nx/src/daemon/server/start.js:8:9
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1976:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EPERM',
+  errno: -1,
+  syscall: 'listen',
+  address: '/private/var/folders/51/qcgkwz4j5cd5hp8rdv7pcyjc0000gq/T/49064634e02242df17a1/d.sock',
+  port: -1
+}
+
+Node.js v22.21.1
+
+
+
+More information: /Users/glauro.juliani/Documents/personal/trying-cli/.nx/workspace-data/d/daemon.log

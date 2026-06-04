@@ -1,0 +1,16 @@
+{
+  "name": "agents-core",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/shared/agents-core/src",
+  "projectType": "library",
+  "tags": ["type:shared", "scope:shared"],
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run",
+        "cwd": "packages/shared/agents-core"
+      }
+    }
+  }
+}

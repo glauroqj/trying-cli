@@ -9,6 +9,11 @@ export const DEFAULT_SCENARIOS: BenchmarkScenario[] = [
   {
     id: 'list-files',
     name: 'List Files',
-    prompt: 'List the files in the current directory (max 5 lines).',
+    prompt: 'List workspace projects and dry-run skill install.',
+  },
+  {
+    id: 'cold-start',
+    name: 'Cold Start',
+    prompt: 'Measure smoke path through agents-core.',
   },
 ];

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "hooks": [
+    {
+      "id": "agents-cli-scaffold",
+      "event": "sessionStart",
+      "description": "Hook de exemplo instalado pela Agents CLI"
+    }
+  ]
+}

@@ -9,7 +9,13 @@ export function createFixtureReport(): BenchmarkSuiteReport {
     dryRun: true,
     scenarios: DEFAULT_SCENARIOS,
     results: DEFAULT_SCENARIOS.flatMap((scenario) =>
-      (['cli-01', 'cli-02', 'cli-03', 'cli-04', 'cli-05'] as const).map(
+      (
+        [
+          'cli-pastel',
+          'cli-commander-clack',
+          'cli-ink',
+        ] as const
+      ).map(
         (adapterId) => ({
           adapterId,
           scenarioId: scenario.id,

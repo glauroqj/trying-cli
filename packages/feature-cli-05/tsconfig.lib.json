@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../dist/out-tsc/packages/feature-cli-05",
-    "declaration": true,
-    "types": ["node"]
-  },
-  "include": ["src/**/*.ts"]
-}

@@ -3,10 +3,10 @@ import { describe, expect, it } from 'vitest';
 import { runSuite } from './index.js';
 
 const stubAdapter: CliAdapter = {
-  id: 'cli-01',
+  id: 'cli-pastel',
   label: 'Stub',
   run: async (scenario, options) => ({
-    adapterId: 'cli-01',
+    adapterId: 'cli-pastel',
     scenarioId: scenario.id,
     status: 'success',
     durationMs: 1,
@@ -33,10 +33,10 @@ describe('runSuite', () => {
   it('filters adapters with only option', async () => {
     const other: CliAdapter = {
       ...stubAdapter,
-      id: 'cli-02',
+      id: 'cli-commander-clack',
       label: 'Other',
       run: async (scenario, options) => ({
-        adapterId: 'cli-02',
+        adapterId: 'cli-commander-clack',
         scenarioId: scenario.id,
         status: 'success',
         durationMs: 1,
@@ -48,10 +48,10 @@ describe('runSuite', () => {
     const report = await runSuite({
       adapters: [stubAdapter, other],
       scenarios: [{ id: 'a', name: 'A', prompt: 'p' }],
-      options: { only: ['cli-02'], dryRun: true },
+      options: { only: ['cli-commander-clack'], dryRun: true },
     });
 
     expect(report.results).toHaveLength(1);
-    expect(report.results[0]?.adapterId).toBe('cli-02');
+    expect(report.results[0]?.adapterId).toBe('cli-commander-clack');
   });
 });

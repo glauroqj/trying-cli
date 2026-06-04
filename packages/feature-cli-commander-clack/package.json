@@ -1,0 +1,21 @@
+{
+  "name": "@trying-cli/feature-cli-commander-clack",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "bin": {
+    "agents-clack": "./src/bin.ts"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.10.0",
+    "@trying-cli/agents-core": "workspace:*",
+    "@trying-cli/benchmark-types": "workspace:*",
+    "commander": "^12.1.0",
+    "picocolors": "^1.1.1"
+  }
+}
