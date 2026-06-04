@@ -15,7 +15,7 @@ Workflow completo de referência para deploy de apps React SPA em S3 com invalid
 
 ```yaml
 name: Deploy SPAs to Staging
-run-name: 'Deploy SPA Staging: ${{ github.ref_name }} by @${{ github.actor }}'
+run-name: "Deploy SPA Staging: ${{ github.ref_name }} by @${{ github.actor }}"
 
 concurrency: staging
 
@@ -23,8 +23,8 @@ env:
   GH_TOKEN: ${{ secrets.CI_GH_TOKEN }}
   BUCKET_NAME: <app>-staging
   AWS_DEFAULT_REGION: us-east-1
-  CLOUDFRONT_ACCOUNT_ID: '<account-id>'
-  CLOUDFRONT_DISTRIBUTION: '<distribution-id>'
+  CLOUDFRONT_ACCOUNT_ID: "<account-id>"
+  CLOUDFRONT_DISTRIBUTION: "<distribution-id>"
   CLOUDFRONT_URL: https://<app>.buildstaging.com
 
 on:
@@ -59,22 +59,22 @@ jobs:
           node-version: 22
 
       - name: Retrieve .npmrc
-        uses: Hotmart-Org/actions/codeartifact@master
+        uses: tryingcli-Org/actions/codeartifact@master
         with:
-          npmrc: '${{ secrets.NPM_RC }}'
+          npmrc: "${{ secrets.NPM_RC }}"
 
       - name: Setup PNPM
-        uses: Hotmart-Org/actions/nx/setup-pnpm@master
+        uses: tryingcli-Org/actions/nx/setup-pnpm@master
 
       - name: Setup Cache
-        uses: Hotmart-Org/actions/nx/setup-nx-cache@master
+        uses: tryingcli-Org/actions/nx/setup-nx-cache@master
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Detect affected projects
         id: detect
-        uses: Hotmart-Org/actions/nx/detect-affected@master
+        uses: tryingcli-Org/actions/nx/detect-affected@master
         with:
           gh-token: ${{ env.GH_TOKEN }}
 
@@ -86,7 +86,7 @@ jobs:
 
       - name: Version and tag affected apps
         if: steps.detect.outputs.has_spa == 'true'
-        uses: Hotmart-Org/actions/nx/release-version@master
+        uses: tryingcli-Org/actions/nx/release-version@master
         with:
           gh-token: ${{ env.GH_TOKEN }}
           framework: react
@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload build artifacts
         if: steps.detect.outputs.has_spa == 'true'
-        uses: Hotmart-Org/actions/nx/upload-artifacts@master
+        uses: tryingcli-Org/actions/nx/upload-artifacts@master
         with:
           framework: react
           artifact-name: dist-artifacts
@@ -136,7 +136,7 @@ jobs:
           echo "=========================================="
 
       - name: Deploy SPA to S3
-        uses: Hotmart-Org/actions/s3/spa/deploy@master
+        uses: tryingcli-Org/actions/s3/spa/deploy@master
         with:
           bucket-name: ${{ env.BUCKET_NAME }}
           package-json-path: ./apps/${{ matrix.app-dir }}/package.json
@@ -152,7 +152,7 @@ Deploy manual via `workflow_dispatch` com seleção de app. Diferente do staging
 
 ```yaml
 name: Deploy SPAs to Production
-run-name: 'Deploy SPA Production: ${{ github.ref_name }} by @${{ github.actor }}'
+run-name: "Deploy SPA Production: ${{ github.ref_name }} by @${{ github.actor }}"
 
 concurrency:
   group: production-${{ inputs.appName }}
@@ -162,15 +162,15 @@ env:
   GH_TOKEN: ${{ secrets.CI_GH_TOKEN }}
   BUCKET_NAME: <app>-production
   AWS_DEFAULT_REGION: us-east-1
-  CLOUDFRONT_ACCOUNT_ID: '<account-id>'
-  CLOUDFRONT_DISTRIBUTION: '<distribution-id>'
-  CLOUDFRONT_URL: https://<app>.hotmart.com
+  CLOUDFRONT_ACCOUNT_ID: "<account-id>"
+  CLOUDFRONT_DISTRIBUTION: "<distribution-id>"
+  CLOUDFRONT_URL: https://<app>.tryingcli.com
 
 on:
   workflow_dispatch:
     inputs:
       appName:
-        description: 'Choose the SPA app to deploy'
+        description: "Choose the SPA app to deploy"
         type: choice
         required: true
         options:
@@ -201,15 +201,15 @@ jobs:
           node-version: 22
 
       - name: Retrieve .npmrc
-        uses: Hotmart-Org/actions/codeartifact@master
+        uses: tryingcli-Org/actions/codeartifact@master
         with:
-          npmrc: '${{ secrets.NPM_RC }}'
+          npmrc: "${{ secrets.NPM_RC }}"
 
       - name: Setup PNPM
-        uses: Hotmart-Org/actions/nx/setup-pnpm@master
+        uses: tryingcli-Org/actions/nx/setup-pnpm@master
 
       - name: Setup Cache
-        uses: Hotmart-Org/actions/nx/setup-nx-cache@master
+        uses: tryingcli-Org/actions/nx/setup-nx-cache@master
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -230,7 +230,7 @@ jobs:
           echo "=========================================="
 
       - name: Deploy SPA to S3
-        uses: Hotmart-Org/actions/s3/spa/deploy@master
+        uses: tryingcli-Org/actions/s3/spa/deploy@master
         with:
           bucket-name: ${{ env.BUCKET_NAME }}
           package-json-path: ./apps/${{ github.event.inputs.appName }}/package.json
@@ -242,39 +242,39 @@ jobs:
 
 #### Diferenças-chave entre Staging e Production
 
-| Aspecto | Staging | Production |
-|---------|---------|------------|
-| Trigger | `push` na `main` (automático) | `workflow_dispatch` (manual) |
-| Detecção | `detect-affected` (SPAs afetados) | Input explícito (`appName`) |
-| Build | `nx affected -t build:staging` | `nx run <app>:build:production` |
-| Concurrency | `staging` (global) | `production-<appName>` (por app) |
-| Versionamento | `release-version` + tags | Não versiona (já taggeado no staging) |
-| Artifacts | Upload/download entre jobs | Build e deploy no mesmo job |
-| Runner | `buildstaging` | `ai` |
-| Cancel in-progress | Sim (default) | Não (`cancel-in-progress: false`) |
+| Aspecto            | Staging                           | Production                            |
+| ------------------ | --------------------------------- | ------------------------------------- |
+| Trigger            | `push` na `main` (automático)     | `workflow_dispatch` (manual)          |
+| Detecção           | `detect-affected` (SPAs afetados) | Input explícito (`appName`)           |
+| Build              | `nx affected -t build:staging`    | `nx run <app>:build:production`       |
+| Concurrency        | `staging` (global)                | `production-<appName>` (por app)      |
+| Versionamento      | `release-version` + tags          | Não versiona (já taggeado no staging) |
+| Artifacts          | Upload/download entre jobs        | Build e deploy no mesmo job           |
+| Runner             | `buildstaging`                    | `ai`                                  |
+| Cancel in-progress | Sim (default)                     | Não (`cancel-in-progress: false`)     |
 
 #### Diferenças-chave entre SPA e MF Deploy
 
-| Aspecto | SPA (`s3/spa/deploy`) | MF (`s3/microfrontend/deploy`) |
-|---------|----------------------|-------------------------------|
-| Action | `Hotmart-Org/actions/s3/spa/deploy` | `Hotmart-Org/actions/s3/microfrontend/deploy` |
-| Input `app-name` | Não tem | Obrigatório |
-| Estrutura no bucket | Raiz (`/`) + `versions/v{version}/` | `{app-name}/_current/` + `{app-name}/v{version}/` |
-| Bucket por app | 1 bucket = 1 app | 1 bucket = N apps |
-| Health check | `index.html` | `remoteEntry.js` |
-| Invalidação CDN | `/*` (raiz) | `/{app-name}/_current/*` |
+| Aspecto             | SPA (`s3/spa/deploy`)                 | MF (`s3/microfrontend/deploy`)                    |
+| ------------------- | ------------------------------------- | ------------------------------------------------- |
+| Action              | `tryingcli-Org/actions/s3/spa/deploy` | `tryingcli-Org/actions/s3/microfrontend/deploy`   |
+| Input `app-name`    | Não tem                               | Obrigatório                                       |
+| Estrutura no bucket | Raiz (`/`) + `versions/v{version}/`   | `{app-name}/_current/` + `{app-name}/v{version}/` |
+| Bucket por app      | 1 bucket = 1 app                      | 1 bucket = N apps                                 |
+| Health check        | `index.html`                          | `remoteEntry.js`                                  |
+| Invalidação CDN     | `/*` (raiz)                           | `/{app-name}/_current/*`                          |
 
 ### O Que Adaptar
 
-| Item | O que mudar | Exemplo |
-|------|-------------|---------|
-| `BUCKET_NAME` | Nome do bucket S3 do ambiente (1 por SPA) | `app-hotmart-spa-staging` |
-| `CLOUDFRONT_ACCOUNT_ID` | Account ID da AWS | `44XXXX46XXXX` |
-| `CLOUDFRONT_DISTRIBUTION` | ID da distribuição CloudFront | `E10XXXBJXXXXBU` |
-| `CLOUDFRONT_URL` | URL da distribuição | `https://app-hotmart-spa.buildstaging.com` |
-| `node-version` | Versão do Node.js | `22` |
-| `concurrency` | Grupo de concorrência por environment | `staging`, `production` |
-| `build:staging` | Target de build por environment | `build:production` |
+| Item                      | O que mudar                               | Exemplo                                      |
+| ------------------------- | ----------------------------------------- | -------------------------------------------- |
+| `BUCKET_NAME`             | Nome do bucket S3 do ambiente (1 por SPA) | `app-tryingcli-spa-staging`                  |
+| `CLOUDFRONT_ACCOUNT_ID`   | Account ID da AWS                         | `44XXXX46XXXX`                               |
+| `CLOUDFRONT_DISTRIBUTION` | ID da distribuição CloudFront             | `E10XXXBJXXXXBU`                             |
+| `CLOUDFRONT_URL`          | URL da distribuição                       | `https://app-tryingcli-spa.buildstaging.com` |
+| `node-version`            | Versão do Node.js                         | `22`                                         |
+| `concurrency`             | Grupo de concorrência por environment     | `staging`, `production`                      |
+| `build:staging`           | Target de build por environment           | `build:production`                           |
 
 ### Checklist de Setup
 

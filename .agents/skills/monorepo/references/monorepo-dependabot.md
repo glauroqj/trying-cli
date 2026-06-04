@@ -13,34 +13,34 @@ Configuração do Dependabot para monorepos com múltiplos apps e packages, cada
 
 Groups reduzem o volume de PRs agrupando bumps relacionados em um único PR.
 
-| Estratégia | Quando usar | Exemplo |
-|------------|-------------|---------|
-| Por ecossistema | Framework com múltiplos pacotes | `next`, `next-*`, `@next/*` |
-| Por tipo | Separar prod de dev | `dependency-type: "production"` |
-| Por padrão | Prefixo comum | `@aws-sdk/*`, `org.springframework*` |
-| Catch-all | Packages pequenos com poucas deps | `patterns: ["*"]` |
+| Estratégia      | Quando usar                       | Exemplo                              |
+| --------------- | --------------------------------- | ------------------------------------ |
+| Por ecossistema | Framework com múltiplos pacotes   | `next`, `next-*`, `@next/*`          |
+| Por tipo        | Separar prod de dev               | `dependency-type: "production"`      |
+| Por padrão      | Prefixo comum                     | `@aws-sdk/*`, `org.springframework*` |
+| Catch-all       | Packages pequenos com poucas deps | `patterns: ["*"]`                    |
 
 Para apps e root, separar production e development em grupos distintos facilita a priorização de review:
 
 ```yaml
-    groups:
-      app-name-production:
-        dependency-type: 'production'
-        patterns:
-          - '*'
-      app-name-development:
-        dependency-type: 'development'
-        patterns:
-          - '*'
+groups:
+  app-name-production:
+    dependency-type: "production"
+    patterns:
+      - "*"
+  app-name-development:
+    dependency-type: "development"
+    patterns:
+      - "*"
 ```
 
 Para packages shared com poucas dependências, um grupo único catch-all é suficiente:
 
 ```yaml
-    groups:
-      shared-package-dependencies:
-        patterns:
-          - '*'
+groups:
+  shared-package-dependencies:
+    patterns:
+      - "*"
 ```
 
 ### Commit Messages com Conventional Commits
@@ -93,27 +93,27 @@ Labels identificam a origem do PR e facilitam filtragem no board:
 ### Controle de Volume
 
 ```yaml
-    # Limitar PRs abertos por diretório
-    open-pull-requests-limit: 5
+# Limitar PRs abertos por diretório
+open-pull-requests-limit: 5
 
-    # Ignorar dependências específicas
-    ignore:
-      - dependency-name: "aws-sdk"
-        update-types: ["version-update:semver-major"]
+# Ignorar dependências específicas
+ignore:
+  - dependency-name: "aws-sdk"
+    update-types: ["version-update:semver-major"]
 
-    # Schedule menos frequente para projetos estáveis
-    schedule:
-      interval: "monthly"
+# Schedule menos frequente para projetos estáveis
+schedule:
+  interval: "monthly"
 ```
 
 Recomendação de limites por tipo de entry:
 
-| Entry | Limite | Justificativa |
-|-------|--------|---------------|
-| Root | `10` | Mais dependências hoisted, precisa de margem |
-| Apps | `5` | Volume moderado, review por time da app |
-| Packages shared | `3` | Poucas deps, PRs menores |
-| GitHub Actions | `5` | Poucas actions, mas updates frequentes |
+| Entry           | Limite | Justificativa                                |
+| --------------- | ------ | -------------------------------------------- |
+| Root            | `10`   | Mais dependências hoisted, precisa de margem |
+| Apps            | `5`    | Volume moderado, review por time da app      |
+| Packages shared | `3`    | Poucas deps, PRs menores                     |
+| GitHub Actions  | `5`    | Poucas actions, mas updates frequentes       |
 
 ### Exemplo Completo (Multi-Stack)
 
@@ -131,223 +131,223 @@ updates:
   # -------------------------------------------------------------------------
   # GitHub Actions
   # -------------------------------------------------------------------------
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     reviewers:
-      - 'hotmart/platform-team'
+      - "tryingcli/platform-team"
     groups:
       github-actions:
         patterns:
-          - '*'
+          - "*"
     commit-message:
-      prefix: 'chore(deps)'
+      prefix: "chore(deps)"
     labels:
-      - 'dependencies'
-      - 'github-actions'
+      - "dependencies"
+      - "github-actions"
     open-pull-requests-limit: 5
 
   # -------------------------------------------------------------------------
   # Root (dependências globais hoisted pelo pnpm)
   # -------------------------------------------------------------------------
-  - package-ecosystem: 'npm'
-    directory: '/'
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     reviewers:
-      - 'hotmart/platform-team'
+      - "tryingcli/platform-team"
     groups:
       root-production:
-        dependency-type: 'production'
+        dependency-type: "production"
         patterns:
-          - '*'
+          - "*"
       root-development:
-        dependency-type: 'development'
+        dependency-type: "development"
         patterns:
-          - '*'
+          - "*"
     commit-message:
-      prefix: 'chore(deps)'
-      include: 'scope'
+      prefix: "chore(deps)"
+      include: "scope"
     labels:
-      - 'dependencies'
+      - "dependencies"
     open-pull-requests-limit: 10
 
   # -------------------------------------------------------------------------
   # Apps — app-name-1
   # -------------------------------------------------------------------------
-  - package-ecosystem: 'npm'
-    directory: '/apps/app-name-1'
+  - package-ecosystem: "npm"
+    directory: "/apps/app-name-1"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     reviewers:
-      - 'hotmart/team-app-name-1'
+      - "tryingcli/team-app-name-1"
     groups:
       app-name-1-production:
-        dependency-type: 'production'
+        dependency-type: "production"
         patterns:
-          - '*'
+          - "*"
       app-name-1-development:
-        dependency-type: 'development'
+        dependency-type: "development"
         patterns:
-          - '*'
+          - "*"
     commit-message:
-      prefix: 'chore(app-name-1)'
-      include: 'scope'
+      prefix: "chore(app-name-1)"
+      include: "scope"
     labels:
-      - 'dependencies'
-      - 'app-name-1'
+      - "dependencies"
+      - "app-name-1"
     open-pull-requests-limit: 5
 
   # -------------------------------------------------------------------------
   # Apps — app-name-2
   # -------------------------------------------------------------------------
-  - package-ecosystem: 'npm'
-    directory: '/apps/app-name-2'
+  - package-ecosystem: "npm"
+    directory: "/apps/app-name-2"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     reviewers:
-      - 'hotmart/team-app-name-2'
+      - "tryingcli/team-app-name-2"
     groups:
       app-name-2-production:
-        dependency-type: 'production'
+        dependency-type: "production"
         patterns:
-          - '*'
+          - "*"
       app-name-2-development:
-        dependency-type: 'development'
+        dependency-type: "development"
         patterns:
-          - '*'
+          - "*"
     commit-message:
-      prefix: 'chore(app-name-2)'
-      include: 'scope'
+      prefix: "chore(app-name-2)"
+      include: "scope"
     labels:
-      - 'dependencies'
-      - 'app-name-2'
+      - "dependencies"
+      - "app-name-2"
     open-pull-requests-limit: 5
 
   # -------------------------------------------------------------------------
   # Backend app (Maven)
   # -------------------------------------------------------------------------
-  - package-ecosystem: 'maven'
-    directory: '/apps/api-payments'
+  - package-ecosystem: "maven"
+    directory: "/apps/api-payments"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     groups:
       spring-ecosystem:
-        patterns: ['org.springframework*']
+        patterns: ["org.springframework*"]
       api-payments-all:
-        patterns: ['*']
+        patterns: ["*"]
     reviewers:
-      - 'hotmart/team-payments'
+      - "tryingcli/team-payments"
     commit-message:
-      prefix: 'chore(api-payments)'
-      include: 'scope'
+      prefix: "chore(api-payments)"
+      include: "scope"
     labels:
-      - 'dependencies'
-      - 'api-payments'
+      - "dependencies"
+      - "api-payments"
     open-pull-requests-limit: 5
 
   # -------------------------------------------------------------------------
   # Serverless (pip)
   # -------------------------------------------------------------------------
-  - package-ecosystem: 'pip'
-    directory: '/apps/lambda-notifications'
+  - package-ecosystem: "pip"
+    directory: "/apps/lambda-notifications"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     groups:
       aws-sdk:
-        patterns: ['boto3', 'botocore', 'aws-*']
+        patterns: ["boto3", "botocore", "aws-*"]
     reviewers:
-      - 'hotmart/team-notifications'
+      - "tryingcli/team-notifications"
     commit-message:
-      prefix: 'chore(lambda-notifications)'
-      include: 'scope'
+      prefix: "chore(lambda-notifications)"
+      include: "scope"
     labels:
-      - 'dependencies'
-      - 'lambda-notifications'
+      - "dependencies"
+      - "lambda-notifications"
     open-pull-requests-limit: 3
 
   # -------------------------------------------------------------------------
   # Packages — feature (mesmos owners da app que consome)
   # -------------------------------------------------------------------------
-  - package-ecosystem: 'npm'
-    directory: '/packages/feature-chat'
+  - package-ecosystem: "npm"
+    directory: "/packages/feature-chat"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     reviewers:
-      - 'hotmart/team-app-name-1'
+      - "tryingcli/team-app-name-1"
     groups:
       feature-chat-dependencies:
         patterns:
-          - '*'
+          - "*"
     commit-message:
-      prefix: 'chore(@packages/feature-chat)'
-      include: 'scope'
+      prefix: "chore(@packages/feature-chat)"
+      include: "scope"
     labels:
-      - 'dependencies'
-      - 'packages-feature'
+      - "dependencies"
+      - "packages-feature"
     open-pull-requests-limit: 5
 
   # -------------------------------------------------------------------------
   # Packages — shared (um entry por pacote para commit prefix alinhado)
   # -------------------------------------------------------------------------
-  - package-ecosystem: 'npm'
-    directory: '/packages/shared/ui'
+  - package-ecosystem: "npm"
+    directory: "/packages/shared/ui"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     reviewers:
-      - 'hotmart/platform-team'
+      - "tryingcli/platform-team"
     groups:
       shared-ui-dependencies:
         patterns:
-          - '*'
+          - "*"
     commit-message:
-      prefix: 'chore(@packages/shared-ui)'
-      include: 'scope'
+      prefix: "chore(@packages/shared-ui)"
+      include: "scope"
     labels:
-      - 'dependencies'
-      - 'packages-shared'
+      - "dependencies"
+      - "packages-shared"
     open-pull-requests-limit: 3
 
-  - package-ecosystem: 'npm'
-    directory: '/packages/shared/i18n'
+  - package-ecosystem: "npm"
+    directory: "/packages/shared/i18n"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
     reviewers:
-      - 'hotmart/platform-team'
+      - "tryingcli/platform-team"
     groups:
       shared-i18n-dependencies:
         patterns:
-          - '*'
+          - "*"
     commit-message:
-      prefix: 'chore(@packages/shared-i18n)'
-      include: 'scope'
+      prefix: "chore(@packages/shared-i18n)"
+      include: "scope"
     labels:
-      - 'dependencies'
-      - 'packages-shared'
+      - "dependencies"
+      - "packages-shared"
     open-pull-requests-limit: 3
 ```
 
 ### Padrão por Tipo de Entry
 
-| Entry | Groups | Commit Prefix | Limite |
-|-------|--------|---------------|--------|
-| GitHub Actions | Catch-all único | `chore(deps)` | `5` |
-| Root | `production` + `development` | `chore(deps)` | `10` |
-| Apps | `production` + `development` | `chore(<app-name>)` | `5` |
-| Packages feature | Catch-all único | `chore(@packages/<name>)` | `5` |
-| Packages shared | Catch-all único | `chore(@packages/<name>)` | `3` |
-| Backend (Maven) | Por ecossistema | `chore(<api-name>)` | `5` |
-| Serverless (pip) | Por ecossistema | `chore(<lambda-name>)` | `3` |
+| Entry            | Groups                       | Commit Prefix             | Limite |
+| ---------------- | ---------------------------- | ------------------------- | ------ |
+| GitHub Actions   | Catch-all único              | `chore(deps)`             | `5`    |
+| Root             | `production` + `development` | `chore(deps)`             | `10`   |
+| Apps             | `production` + `development` | `chore(<app-name>)`       | `5`    |
+| Packages feature | Catch-all único              | `chore(@packages/<name>)` | `5`    |
+| Packages shared  | Catch-all único              | `chore(@packages/<name>)` | `3`    |
+| Backend (Maven)  | Por ecossistema              | `chore(<api-name>)`       | `5`    |
+| Serverless (pip) | Por ecossistema              | `chore(<lambda-name>)`    | `3`    |
 
 ### Checklist de Configuração
 

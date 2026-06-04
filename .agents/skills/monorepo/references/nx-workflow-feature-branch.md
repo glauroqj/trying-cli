@@ -36,7 +36,7 @@ apps/
 
 ```yaml
 name: Deploy in Feature
-run-name: 'Feature Deploy: ${{ github.ref_name }} by @${{ github.actor }}'
+run-name: "Feature Deploy: ${{ github.ref_name }} by @${{ github.actor }}"
 
 on:
   push:
@@ -84,7 +84,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Base Module (Infra)
-        uses: Hotmart-Org/actions/base-module@master
+        uses: tryingcli-Org/actions/base-module@master
         with:
           gh-token: ${{ secrets.CI_GH_TOKEN }}
           pingdom-key: ${{ secrets.PINGDOM_API_TOKEN }}
@@ -107,15 +107,15 @@ jobs:
           node-version: 20
 
       - name: Retrieve .npmrc
-        uses: Hotmart-Org/actions/codeartifact@master
+        uses: tryingcli-Org/actions/codeartifact@master
         with:
-          npmrc: '${{ secrets.NPM_RC }}'
+          npmrc: "${{ secrets.NPM_RC }}"
 
       - name: Setup PNPM
-        uses: Hotmart-Org/actions/nx/setup-pnpm@master
+        uses: tryingcli-Org/actions/nx/setup-pnpm@master
 
       - name: Setup Cache
-        uses: Hotmart-Org/actions/nx/setup-nx-cache@master
+        uses: tryingcli-Org/actions/nx/setup-nx-cache@master
 
       - name: Install Dependencies
         run: |
@@ -135,13 +135,13 @@ jobs:
           pnpm nx run ${{ matrix.app }}:build:feature
 
       - name: Docker Build
-        uses: Hotmart-Org/actions/docker@master
+        uses: tryingcli-Org/actions/docker@master
         with:
           file: apps/${{ matrix.app }}/feature.yml
           dockerfile: apps/${{ matrix.app }}/Dockerfile
 
       - name: Deploy Feature
-        uses: Hotmart-Org/actions/helm@master
+        uses: tryingcli-Org/actions/helm@master
         with:
           file: apps/${{ matrix.app }}/feature.yml
           environment: staging
@@ -179,56 +179,56 @@ O branch é sanitizado: lowercase, apenas alfanuméricos (sem `/`, `-`, `_`).
 
 Exemplo: monorepo com 3 apps (`app`, `astrobox`, `astroflow`), branch `feature/bwtest`:
 
-| App | Host no `feature.yml` | URL gerada |
-|-----|----------------------|------------|
-| `app` | `app.buildstaging.com` | `https://featurebwtest-app.buildstaging.com` |
-| `astrobox` | `astrobox.buildstaging.com` | `https://featurebwtest-astrobox.buildstaging.com` |
+| App         | Host no `feature.yml`        | URL gerada                                         |
+| ----------- | ---------------------------- | -------------------------------------------------- |
+| `app`       | `app.buildstaging.com`       | `https://featurebwtest-app.buildstaging.com`       |
+| `astrobox`  | `astrobox.buildstaging.com`  | `https://featurebwtest-astrobox.buildstaging.com`  |
 | `astroflow` | `astroflow.buildstaging.com` | `https://featurebwtest-astroflow.buildstaging.com` |
 
 Outro exemplo com branch `feature/ONB-2099`:
 
-| App | URL gerada |
-|-----|------------|
-| `app` | `https://featureonb2099-app.buildstaging.com` |
-| `astrobox` | `https://featureonb2099-astrobox.buildstaging.com` |
+| App         | URL gerada                                          |
+| ----------- | --------------------------------------------------- |
+| `app`       | `https://featureonb2099-app.buildstaging.com`       |
+| `astrobox`  | `https://featureonb2099-astrobox.buildstaging.com`  |
 | `astroflow` | `https://featureonb2099-astroflow.buildstaging.com` |
 
 > Cada app do monorepo recebe sua própria URL. O prefixo é sempre o nome da branch sanitizado, e o host vem do `lb.hosts[].host` do `feature.yml` de cada app.
 
 ### Diferenças-chave vs Staging/Production
 
-| Aspecto | Feature Branch | Staging | Production |
-|---------|---------------|---------|------------|
-| Trigger | Push em `feature/**` | Push em `main` | `workflow_dispatch` |
-| Detecção | Todas as apps (`ls apps/*/`) | `detect-affected` | Input explícito |
-| Deploy | Docker + Helm | S3 + CloudFront | S3 + CloudFront |
-| URL | Dinâmica por branch | Fixa | Fixa |
-| Versionamento | Não versiona | `release-version` | Não versiona |
-| Infra | `base-module` (step por app) | Não precisa | Não precisa |
-| Cleanup | Automático (`branchReleaseCollapseTime`) | N/A | N/A |
+| Aspecto       | Feature Branch                           | Staging           | Production          |
+| ------------- | ---------------------------------------- | ----------------- | ------------------- |
+| Trigger       | Push em `feature/**`                     | Push em `main`    | `workflow_dispatch` |
+| Detecção      | Todas as apps (`ls apps/*/`)             | `detect-affected` | Input explícito     |
+| Deploy        | Docker + Helm                            | S3 + CloudFront   | S3 + CloudFront     |
+| URL           | Dinâmica por branch                      | Fixa              | Fixa                |
+| Versionamento | Não versiona                             | `release-version` | Não versiona        |
+| Infra         | `base-module` (step por app)             | Não precisa       | Não precisa         |
+| Cleanup       | Automático (`branchReleaseCollapseTime`) | N/A               | N/A                 |
 
 ### Actions Utilizadas
 
-| Action | Função |
-|--------|--------|
-| `Hotmart-Org/actions/base-module` | Configura infra (Terraform, namespace, ingress) — roda como step, não como job |
-| `Hotmart-Org/actions/codeartifact` | Configura `.npmrc` com tokens do registry privado |
-| `Hotmart-Org/actions/nx/setup-pnpm` | Instala e configura pnpm |
-| `Hotmart-Org/actions/nx/setup-nx-cache` | Cache do pnpm store + `.nx/cache` |
-| `Hotmart-Org/actions/docker` | Build e push da imagem Docker (`dockerfile` e `file` como inputs) |
-| `Hotmart-Org/actions/helm` | Deploy via Helm no EKS (`file` como input, lê `branchRelease`) |
+| Action                                    | Função                                                                         |
+| ----------------------------------------- | ------------------------------------------------------------------------------ |
+| `tryingcli-Org/actions/base-module`       | Configura infra (Terraform, namespace, ingress) — roda como step, não como job |
+| `tryingcli-Org/actions/codeartifact`      | Configura `.npmrc` com tokens do registry privado                              |
+| `tryingcli-Org/actions/nx/setup-pnpm`     | Instala e configura pnpm                                                       |
+| `tryingcli-Org/actions/nx/setup-nx-cache` | Cache do pnpm store + `.nx/cache`                                              |
+| `tryingcli-Org/actions/docker`            | Build e push da imagem Docker (`dockerfile` e `file` como inputs)              |
+| `tryingcli-Org/actions/helm`              | Deploy via Helm no EKS (`file` como input, lê `branchRelease`)                 |
 
 ### O Que Adaptar
 
-| Item | O que mudar | Exemplo |
-|------|-------------|---------|
-| `<namespace>` | Namespace do Kubernetes | `vulcano` |
-| `<app>` | Nome da app usado no host dinâmico | `app` (gera `featurexyz-app.buildstaging.com`) |
-| `node-version` | Versão do Node.js | `20` |
-| Branches trigger | Padrões de branch | `feature/**`, `fix/**` |
-| `TARGET_ENV` | Nome da env var que controla o env file | Depende do bundler config |
-| Flags de pnpm | Remover se não necessário | Testar sem `shamefully-hoist` |
-| Secrets do base-module | Apenas os que o monorepo usa | Nem todos são obrigatórios |
+| Item                   | O que mudar                             | Exemplo                                        |
+| ---------------------- | --------------------------------------- | ---------------------------------------------- |
+| `<namespace>`          | Namespace do Kubernetes                 | `vulcano`                                      |
+| `<app>`                | Nome da app usado no host dinâmico      | `app` (gera `featurexyz-app.buildstaging.com`) |
+| `node-version`         | Versão do Node.js                       | `20`                                           |
+| Branches trigger       | Padrões de branch                       | `feature/**`, `fix/**`                         |
+| `TARGET_ENV`           | Nome da env var que controla o env file | Depende do bundler config                      |
+| Flags de pnpm          | Remover se não necessário               | Testar sem `shamefully-hoist`                  |
+| Secrets do base-module | Apenas os que o monorepo usa            | Nem todos são obrigatórios                     |
 
 ### Checklist de Setup
 

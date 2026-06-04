@@ -11,14 +11,14 @@ Guia para configurar o workflow GitHub Actions de feature branch em um monorepo 
 
 ### Diferença Fundamental vs Staging/Production
 
-| Aspecto | Feature Branch | Staging/Production |
-|---------|---------------|-------------------|
-| Detecção de apps | **Todas** (`ls apps/*/`) | Apenas affected (`detect-affected`) |
-| Deploy target | Docker + Helm (container) | S3 + CloudFront (static) |
-| URL | Dinâmica por branch | Fixa |
-| Versionamento | Não versiona | `release-version` (staging) |
-| Infra base | `base-module` por app (step) | Não precisa |
-| Cleanup | Automático (`branchReleaseCollapseTime`) | N/A |
+| Aspecto          | Feature Branch                           | Staging/Production                  |
+| ---------------- | ---------------------------------------- | ----------------------------------- |
+| Detecção de apps | **Todas** (`ls apps/*/`)                 | Apenas affected (`detect-affected`) |
+| Deploy target    | Docker + Helm (container)                | S3 + CloudFront (static)            |
+| URL              | Dinâmica por branch                      | Fixa                                |
+| Versionamento    | Não versiona                             | `release-version` (staging)         |
+| Infra base       | `base-module` por app (step)             | Não precisa                         |
+| Cleanup          | Automático (`branchReleaseCollapseTime`) | N/A                                 |
 
 Feature branch builda **todas** as apps (não apenas affected) para garantir que tudo funciona junto no ambiente de teste.
 
@@ -86,57 +86,58 @@ build-and-deploy:
 O `base-module` configura a infra (Terraform — namespace, ingress) usando o `feature.yml` **da app**, não da raiz do repo.
 
 ```yaml
-  - name: Base Module (Infra)
-    uses: Hotmart-Org/actions/base-module@master
-    with:
-      gh-token: ${{ secrets.CI_GH_TOKEN }}
-      pingdom-key: ${{ secrets.PINGDOM_API_TOKEN }}
-      statping-key: ${{ secrets.STATPING_API_KEY }}
-      newrelic-key: ${{ secrets.NEW_RELIC_API_KEY }}
-      datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
-      datadog-app-key: ${{ secrets.DATADOG_APP_KEY }}
-      cloudflare-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      mongodb_atlas_private_key: ${{ secrets.MONGODB_ATLAS_PRIVATE_KEY }}
-      mongodb_atlas_public_key: ${{ secrets.MONGODB_ATLAS_PUBLIC_KEY }}
-      file: apps/${{ matrix.app }}/feature.yml
-      environment: staging
-      cluster: buildstaging
-      namespace: <namespace>
+- name: Base Module (Infra)
+  uses: tryingcli-Org/actions/base-module@master
+  with:
+    gh-token: ${{ secrets.CI_GH_TOKEN }}
+    pingdom-key: ${{ secrets.PINGDOM_API_TOKEN }}
+    statping-key: ${{ secrets.STATPING_API_KEY }}
+    newrelic-key: ${{ secrets.NEW_RELIC_API_KEY }}
+    datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
+    datadog-app-key: ${{ secrets.DATADOG_APP_KEY }}
+    cloudflare-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    sentry-auth-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+    mongodb_atlas_private_key: ${{ secrets.MONGODB_ATLAS_PRIVATE_KEY }}
+    mongodb_atlas_public_key: ${{ secrets.MONGODB_ATLAS_PUBLIC_KEY }}
+    file: apps/${{ matrix.app }}/feature.yml
+    environment: staging
+    cluster: buildstaging
+    namespace: <namespace>
 ```
 
 #### Steps de Setup
 
 ```yaml
-  - name: Setup Node
-    uses: actions/setup-node@v4
-    with:
-      node-version: 20
+- name: Setup Node
+  uses: actions/setup-node@v4
+  with:
+    node-version: 20
 
-  - name: Retrieve .npmrc
-    uses: Hotmart-Org/actions/codeartifact@master
-    with:
-      npmrc: '${{ secrets.NPM_RC }}'
+- name: Retrieve .npmrc
+  uses: tryingcli-Org/actions/codeartifact@master
+  with:
+    npmrc: "${{ secrets.NPM_RC }}"
 
-  - name: Setup PNPM
-    uses: Hotmart-Org/actions/nx/setup-pnpm@master
+- name: Setup PNPM
+  uses: tryingcli-Org/actions/nx/setup-pnpm@master
 
-  - name: Setup Cache
-    uses: Hotmart-Org/actions/nx/setup-nx-cache@master
+- name: Setup Cache
+  uses: tryingcli-Org/actions/nx/setup-nx-cache@master
 ```
 
 #### Step: Install Dependencies
 
 ```yaml
-  - name: Install Dependencies
-    run: |
-      echo "shamefully-hoist=true" >> .npmrc
-      echo "strict-peer-dependencies=false" >> .npmrc
-      echo "auto-install-peers=true" >> .npmrc
-      pnpm install --frozen-lockfile
+- name: Install Dependencies
+  run: |
+    echo "shamefully-hoist=true" >> .npmrc
+    echo "strict-peer-dependencies=false" >> .npmrc
+    echo "auto-install-peers=true" >> .npmrc
+    pnpm install --frozen-lockfile
 ```
 
 As flags extras no `.npmrc` são workarounds comuns em monorepos com dependências legadas:
+
 - `shamefully-hoist=true` — hoist todas as dependências para a raiz (necessário para alguns bundlers)
 - `strict-peer-dependencies=false` — não falha em conflitos de peer deps
 - `auto-install-peers=true` — instala peer deps automaticamente
@@ -146,15 +147,15 @@ As flags extras no `.npmrc` são workarounds comuns em monorepos com dependênci
 #### Step de Build (com APP_HOST dinâmico)
 
 ```yaml
-  - name: Build app
-    env:
-      TARGET_ENV: feature
-    run: |
-      BRANCH_NAME="${{ github.ref_name }}"
-      CLEAN_BRANCH=$(echo "$BRANCH_NAME" | tr -cd '[:alnum:]\n' | tr '[:upper:]' '[:lower:]')
-      export APP_HOST="${CLEAN_BRANCH}-<app>.buildstaging.com"
-      echo "🎯 Building ${{ matrix.app }} for feature (host: $APP_HOST)..."
-      pnpm nx run ${{ matrix.app }}:build:feature
+- name: Build app
+  env:
+    TARGET_ENV: feature
+  run: |
+    BRANCH_NAME="${{ github.ref_name }}"
+    CLEAN_BRANCH=$(echo "$BRANCH_NAME" | tr -cd '[:alnum:]\n' | tr '[:upper:]' '[:lower:]')
+    export APP_HOST="${CLEAN_BRANCH}-<app>.buildstaging.com"
+    echo "🎯 Building ${{ matrix.app }} for feature (host: $APP_HOST)..."
+    pnpm nx run ${{ matrix.app }}:build:feature
 ```
 
 O step faz duas coisas: `TARGET_ENV=feature` faz o bundler carregar `env/.feature`, e o `export APP_HOST` sobrescreve o valor estático do `.feature` com a URL dinâmica da branch. Isso é **obrigatório** — para detalhes de como funciona e por que, consulte a seção "APP_HOST dinâmico" em `feature-branch-app-setup.md`.
@@ -162,19 +163,19 @@ O step faz duas coisas: `TARGET_ENV=feature` faz o bundler carregar `env/.featur
 #### Steps de Docker e Deploy
 
 ```yaml
-  - name: Docker Build
-    uses: Hotmart-Org/actions/docker@master
-    with:
-      file: apps/${{ matrix.app }}/feature.yml
-      dockerfile: apps/${{ matrix.app }}/Dockerfile
+- name: Docker Build
+  uses: tryingcli-Org/actions/docker@master
+  with:
+    file: apps/${{ matrix.app }}/feature.yml
+    dockerfile: apps/${{ matrix.app }}/Dockerfile
 
-  - name: Deploy Feature
-    uses: Hotmart-Org/actions/helm@master
-    with:
-      file: apps/${{ matrix.app }}/feature.yml
-      environment: staging
-      cluster: buildstaging
-      namespace: <namespace>
+- name: Deploy Feature
+  uses: tryingcli-Org/actions/helm@master
+  with:
+    file: apps/${{ matrix.app }}/feature.yml
+    environment: staging
+    cluster: buildstaging
+    namespace: <namespace>
 ```
 
 Todos os 3 steps (base-module, docker, helm) usam o mesmo `file: apps/${{ matrix.app }}/feature.yml`.
@@ -202,30 +203,30 @@ Garante que apenas um deploy por branch roda por vez. Pushes subsequentes cancel
 
 ### Secrets Necessários
 
-| Secret | Descrição |
-|--------|-----------|
-| `CI_GH_TOKEN` | Token GitHub com permissão de escrita |
-| `NPM_RC` | Conteúdo do `.npmrc` para registry privado |
-| `PINGDOM_API_TOKEN` | Token Pingdom (base-module) |
-| `STATPING_API_KEY` | Token Statping (base-module) |
-| `NEW_RELIC_API_KEY` | Token New Relic (base-module) |
-| `DATADOG_API_KEY` | API key Datadog (base-module) |
-| `DATADOG_APP_KEY` | App key Datadog (base-module) |
-| `CLOUDFLARE_API_TOKEN` | Token Cloudflare (base-module) |
-| `SENTRY_AUTH_TOKEN` | Token Sentry (base-module) |
-| `MONGODB_ATLAS_PRIVATE_KEY` | Private key MongoDB Atlas (base-module) |
-| `MONGODB_ATLAS_PUBLIC_KEY` | Public key MongoDB Atlas (base-module) |
+| Secret                      | Descrição                                  |
+| --------------------------- | ------------------------------------------ |
+| `CI_GH_TOKEN`               | Token GitHub com permissão de escrita      |
+| `NPM_RC`                    | Conteúdo do `.npmrc` para registry privado |
+| `PINGDOM_API_TOKEN`         | Token Pingdom (base-module)                |
+| `STATPING_API_KEY`          | Token Statping (base-module)               |
+| `NEW_RELIC_API_KEY`         | Token New Relic (base-module)              |
+| `DATADOG_API_KEY`           | API key Datadog (base-module)              |
+| `DATADOG_APP_KEY`           | App key Datadog (base-module)              |
+| `CLOUDFLARE_API_TOKEN`      | Token Cloudflare (base-module)             |
+| `SENTRY_AUTH_TOKEN`         | Token Sentry (base-module)                 |
+| `MONGODB_ATLAS_PRIVATE_KEY` | Private key MongoDB Atlas (base-module)    |
+| `MONGODB_ATLAS_PUBLIC_KEY`  | Public key MongoDB Atlas (base-module)     |
 
 ### Adaptações por Monorepo
 
-| Item | O que mudar | Exemplo |
-|------|-------------|---------|
-| `<namespace>` | Namespace Kubernetes | `vulcano` |
-| `<app>` | Nome da app usado no host dinâmico | `app` (gera `featurexyz-app.buildstaging.com`) |
-| `node-version` | Versão do Node.js | `20` |
-| Branches trigger | Padrões de branch | `feature/**`, `fix/**` |
-| Flags de pnpm | Remover se não necessário | Testar sem `shamefully-hoist` |
-| Secrets do base-module | Apenas os que o monorepo usa | Nem todos são obrigatórios |
+| Item                   | O que mudar                        | Exemplo                                        |
+| ---------------------- | ---------------------------------- | ---------------------------------------------- |
+| `<namespace>`          | Namespace Kubernetes               | `vulcano`                                      |
+| `<app>`                | Nome da app usado no host dinâmico | `app` (gera `featurexyz-app.buildstaging.com`) |
+| `node-version`         | Versão do Node.js                  | `20`                                           |
+| Branches trigger       | Padrões de branch                  | `feature/**`, `fix/**`                         |
+| Flags de pnpm          | Remover se não necessário          | Testar sem `shamefully-hoist`                  |
+| Secrets do base-module | Apenas os que o monorepo usa       | Nem todos são obrigatórios                     |
 
 ### Adicionando Feature Branch a um Monorepo Existente
 
@@ -242,11 +243,11 @@ Garante que apenas um deploy por branch roda por vez. Pushes subsequentes cancel
 
 ### Troubleshooting
 
-| Problema | Diagnóstico | Solução |
-|----------|-------------|---------|
-| `cp: cannot stat 'feature.yml'` no base-module | `file` aponta para raiz em vez da app | Usar `file: apps/${{ matrix.app }}/feature.yml` |
-| Nova app não aparece na matrix | Diretório não existe em `apps/` | Garantir que `apps/<app>/` existe |
-| Build falha com "target build:feature not found" | Falta configuration no project.json | Adicionar configuration `feature` |
-| Deploy sobe mas app retorna 502 | Health check falhando | Verificar nginx.conf e containerPort |
-| URL da branch não resolve | Ingress não configurado | Verificar base-module e host no feature.yml |
-| Peer dependency conflicts no install | Dependências legadas | Adicionar flags `shamefully-hoist` e `strict-peer-dependencies` |
+| Problema                                         | Diagnóstico                           | Solução                                                         |
+| ------------------------------------------------ | ------------------------------------- | --------------------------------------------------------------- |
+| `cp: cannot stat 'feature.yml'` no base-module   | `file` aponta para raiz em vez da app | Usar `file: apps/${{ matrix.app }}/feature.yml`                 |
+| Nova app não aparece na matrix                   | Diretório não existe em `apps/`       | Garantir que `apps/<app>/` existe                               |
+| Build falha com "target build:feature not found" | Falta configuration no project.json   | Adicionar configuration `feature`                               |
+| Deploy sobe mas app retorna 502                  | Health check falhando                 | Verificar nginx.conf e containerPort                            |
+| URL da branch não resolve                        | Ingress não configurado               | Verificar base-module e host no feature.yml                     |
+| Peer dependency conflicts no install             | Dependências legadas                  | Adicionar flags `shamefully-hoist` e `strict-peer-dependencies` |

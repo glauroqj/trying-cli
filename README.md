@@ -1,6 +1,6 @@
 # trying-cli
 
-Monorepo Nx + pnpm para benchmark de 5 CLIs de coding agents. Estrutura baseada nas skills Hotmart de [monorepo](.agents/skills/monorepo/SKILL.md) e [Feature-Sliced Design](.agents/skills/react-feature-sliced-design/SKILL.md), adaptadas para Node.
+Monorepo Nx + pnpm para benchmark de 5 CLIs de coding agents. Estrutura baseada nas skills tryingcli de [monorepo](.agents/skills/monorepo/SKILL.md) e [Feature-Sliced Design](.agents/skills/react-feature-sliced-design/SKILL.md), adaptadas para Node.
 
 ## Estrutura
 
@@ -16,7 +16,7 @@ packages/shared/
 
 ### Convenção `cli-*`
 
-A app `cli-benchmark` usa prefixo `cli-*` (harness de terminal), não `app-*` (frontend no golden path Hotmart). Tags Nx: `type:api` na app, `type:feature` nos packages de domínio.
+A app `cli-benchmark` usa prefixo `cli-*` (harness de terminal), não `app-*` (frontend no golden path tryingcli). Tags Nx: `type:api` na app, `type:feature` nos packages de domínio.
 
 ### Boundaries
 

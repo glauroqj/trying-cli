@@ -17,81 +17,94 @@ Context e Provider da feature. Encapsula estado compartilhado entre componentes.
 
 ```tsx
 interface CheckoutContextValue {
-  state: CheckoutState           // dados reativos — total, items, status
-  actions: CheckoutActions       // operações — submitOrder, updateItem
-  meta: {                        // metadados não-reativos — environment, user, refs
-    environment: string
-    user: User
-    formRef: RefObject<HTMLFormElement>
-  }
+  state: CheckoutState; // dados reativos — total, items, status
+  actions: CheckoutActions; // operações — submitOrder, updateItem
+  meta: {
+    // metadados não-reativos — environment, user, refs
+    environment: string;
+    user: User;
+    formRef: RefObject<HTMLFormElement>;
+  };
 }
 ```
 
 `meta` é opcional — use quando a feature recebe dados externos (environment, user) ou precisa de refs compartilhadas. Se a feature não tem metadados, use apenas `{ state, actions }`.
+
 - Um context por feature: cada feature tem seu próprio context. Sem context compartilhado entre features
 - Dados externos via props: environment, user e callbacks chegam via props do Provider, nunca acessados diretamente pela feature
 - Context por responsabilidade: não misture responsabilidades diferentes no mesmo context. Se o context gerencia dados de compra e dados de frete, uma mudança no frete re-renderiza componentes que só consomem dados de compra
 
 ### Quando a Feature Precisa de Provider
 
-| Cenário | Provider? |
-|---------|-----------|
-| Múltiplos componentes compartilham estado | Sim |
-| Feature expõe compound component | Sim |
-| Feature precisa de dados externos (environment, user) | Sim |
-| Feature CRUD simples sem estado compartilhado | Não |
-| Feature com componente único e auto-contido | Não |
+| Cenário                                               | Provider? |
+| ----------------------------------------------------- | --------- |
+| Múltiplos componentes compartilham estado             | Sim       |
+| Feature expõe compound component                      | Sim       |
+| Feature precisa de dados externos (environment, user) | Sim       |
+| Feature CRUD simples sem estado compartilhado         | Não       |
+| Feature com componente único e auto-contido           | Não       |
 
 ### Implementação Base
 
 ```tsx
 // context/checkout-context.tsx
-import { createContext, useContext, useReducer, useCallback } from 'react'
-import type { CheckoutState, CheckoutActions } from '../domain/types'
+import { createContext, useContext, useReducer, useCallback } from "react";
+import type { CheckoutState, CheckoutActions } from "../domain/types";
 
 interface CheckoutContextValue {
-  state: CheckoutState
-  actions: CheckoutActions
+  state: CheckoutState;
+  actions: CheckoutActions;
 }
 
-const CheckoutContext = createContext<CheckoutContextValue | undefined>(undefined)
+const CheckoutContext = createContext<CheckoutContextValue | undefined>(
+  undefined,
+);
 
 // Hook de acesso — valida uso dentro do Provider
 export function useCheckoutContext(): CheckoutContextValue {
-  const context = useContext(CheckoutContext)
+  const context = useContext(CheckoutContext);
   if (context === undefined) {
-    throw new Error('useCheckoutContext must be used within a CheckoutProvider')
+    throw new Error(
+      "useCheckoutContext must be used within a CheckoutProvider",
+    );
   }
-  return context
+  return context;
 }
 
 // Custom Provider — nunca use <CheckoutContext.Provider> diretamente
-export function CheckoutProvider({ children, environment, user, onComplete }: CheckoutProviderProps) {
-  const [state, dispatch] = useReducer(checkoutReducer, initialState)
+export function CheckoutProvider({
+  children,
+  environment,
+  user,
+  onComplete,
+}: CheckoutProviderProps) {
+  const [state, dispatch] = useReducer(checkoutReducer, initialState);
 
   const submitOrder = useCallback(async () => {
-    dispatch({ type: 'SUBMIT_START' })
+    dispatch({ type: "SUBMIT_START" });
     // ... lógica de submit
-    onComplete?.()
-  }, [onComplete])
+    onComplete?.();
+  }, [onComplete]);
 
   return (
-    <CheckoutContext value={{
-      state,
-      actions: { submitOrder, dispatch },
-    }}>
+    <CheckoutContext
+      value={{
+        state,
+        actions: { submitOrder, dispatch },
+      }}
+    >
       {children}
     </CheckoutContext>
-  )
+  );
 }
 ```
 
 ```tsx
 // Componente interno consome via hook seguro
 function CheckoutForm() {
-  const { state, actions } = useCheckoutContext()
+  const { state, actions } = useCheckoutContext();
   // Se usado fora do Provider, erro explícito em dev
-  return <form onSubmit={actions.submitOrder}>...</form>
+  return <form onSubmit={actions.submitOrder}>...</form>;
 }
 ```
 
@@ -103,11 +116,11 @@ Features nunca acessam `process.env` ou estado global diretamente. A app passa e
 // ✅ Feature recebe environment e user via props
 <Checkout.Provider environment={environment} user={user}>
   <Checkout.Form />
-</Checkout.Provider>
+</Checkout.Provider>;
 
 // ❌ Feature acessa process.env diretamente
 function CheckoutProvider({ children }) {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL // Errado!
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL; // Errado!
 }
 ```
 
@@ -116,12 +129,12 @@ Dentro da feature, o environment é resolvido via config interna:
 ```ts
 // domain/config.ts
 const API_URLS = {
-  staging: 'https://api-checkout.buildstaging.com',
-  production: 'https://api-checkout.hotmart.com',
-} as const
+  staging: "https://api-checkout.buildstaging.com",
+  production: "https://api-checkout.tryingcli.com",
+} as const;
 
 export function resolveApiUrl(environment: keyof typeof API_URLS): string {
-  return API_URLS[environment]
+  return API_URLS[environment];
 }
 ```
 
@@ -146,66 +159,76 @@ O split state/actions evita re-renders desnecessários sem criar provider hell:
 // context/checkout-context.tsx
 
 // Context de estado — muda quando state muda
-const CheckoutStateContext = createContext<CheckoutState | undefined>(undefined)
+const CheckoutStateContext = createContext<CheckoutState | undefined>(
+  undefined,
+);
 
 // Context de ações — referência estável, não causa re-render
-const CheckoutActionsContext = createContext<CheckoutActions | undefined>(undefined)
+const CheckoutActionsContext = createContext<CheckoutActions | undefined>(
+  undefined,
+);
 
-export function CheckoutProvider({ children, environment, user }: CheckoutProviderProps) {
-  const [state, dispatch] = useReducer(checkoutReducer, initialState)
+export function CheckoutProvider({
+  children,
+  environment,
+  user,
+}: CheckoutProviderProps) {
+  const [state, dispatch] = useReducer(checkoutReducer, initialState);
 
   // Actions são estáveis — useMemo garante referência fixa
-  const actions = useMemo(() => ({
-    submitOrder: () => dispatch({ type: 'SUBMIT' }),
-    updateItem: (item: Item) => dispatch({ type: 'UPDATE_ITEM', payload: item }),
-  }), [])
+  const actions = useMemo(
+    () => ({
+      submitOrder: () => dispatch({ type: "SUBMIT" }),
+      updateItem: (item: Item) =>
+        dispatch({ type: "UPDATE_ITEM", payload: item }),
+    }),
+    [],
+  );
 
   return (
     <CheckoutActionsContext value={actions}>
-      <CheckoutStateContext value={state}>
-        {children}
-      </CheckoutStateContext>
+      <CheckoutStateContext value={state}>{children}</CheckoutStateContext>
     </CheckoutActionsContext>
-  )
+  );
 }
 
 // Hooks separados — componente consome só o que precisa
 export function useCheckoutState(): CheckoutState {
-  const context = useContext(CheckoutStateContext)
+  const context = useContext(CheckoutStateContext);
   if (context === undefined) {
-    throw new Error('useCheckoutState must be used within a CheckoutProvider')
+    throw new Error("useCheckoutState must be used within a CheckoutProvider");
   }
-  return context
+  return context;
 }
 
 export function useCheckoutActions(): CheckoutActions {
-  const context = useContext(CheckoutActionsContext)
+  const context = useContext(CheckoutActionsContext);
   if (context === undefined) {
-    throw new Error('useCheckoutActions must be used within a CheckoutProvider')
+    throw new Error(
+      "useCheckoutActions must be used within a CheckoutProvider",
+    );
   }
-  return context
+  return context;
 }
 ```
 
 ```tsx
 // Componente que só chama ações — NÃO re-renderiza quando state muda
 function CheckoutSubmitButton() {
-  const { submitOrder } = useCheckoutActions()
-  return <button onClick={submitOrder}>Finalizar</button>
+  const { submitOrder } = useCheckoutActions();
+  return <button onClick={submitOrder}>Finalizar</button>;
 }
 
 // Componente que lê estado — re-renderiza quando state muda
 function CheckoutTotal() {
-  const { total } = useCheckoutState()
-  return <span>Total: {total}</span>
+  const { total } = useCheckoutState();
+  return <span>Total: {total}</span>;
 }
 ```
 
 O Provider continua sendo um só componente (sem provider hell). A separação é interna — dois contexts dentro do mesmo Provider. O consumidor escolhe qual hook usar.
 
 Evite criar múltiplos Providers aninhados (hadouken de providers). Se a feature precisa de tantos contexts que vira um nesting profundo, a feature é grande demais e deve ser dividida.
-
-
 
 ### Referências Externas
 

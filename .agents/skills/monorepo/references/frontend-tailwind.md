@@ -12,12 +12,14 @@ Em monorepos frontend, o Tailwind é configurado exclusivamente na camada de `ap
 ### Por Que Centralizar
 
 Quando cada package configura Tailwind independentemente:
+
 - CSS duplicado no bundle final (mesmas utility classes geradas N vezes)
 - Fragmentação de ativos estáticos — múltiplos arquivos CSS carregados em paralelo
 - FCP degradado — browser precisa baixar e parsear CSS redundante antes do primeiro paint
 - Conflito de versões de preset/tokens entre packages
 
 Com Tailwind centralizado na app:
+
 - Um único CSS gerado com todas as classes usadas (app + packages)
 - Tokens do design system aplicados uma vez, consistentes em todo o bundle
 - Tree-shaking natural — só classes efetivamente usadas entram no build
@@ -48,14 +50,14 @@ Tailwind e Cosmos DS são dependências exclusivas da raiz. Packages não declar
 // package.json (raiz)
 {
   "dependencies": {
-    "@hotmart-org-ca/cosmos-ds-core": "^1.x",
-    "@hotmart-org-ca/cosmos-ds-react": "^1.x"
+    "@tryingcli-org-ca/cosmos-ds-core": "^1.x",
+    "@tryingcli-org-ca/cosmos-ds-react": "^1.x",
   },
   "devDependencies": {
     "tailwindcss": "^4.x",
     "@tailwindcss/postcss": "^4.x",
-    "tw-animate-css": "^1.x"
-  }
+    "tw-animate-css": "^1.x",
+  },
 }
 ```
 
@@ -65,10 +67,10 @@ O `index.css` de cada app importa o Tailwind, o preset do Cosmos e declara `@sou
 
 ```css
 /* apps/app-platform/src/index.css */
-@import 'tailwindcss';
-@import 'tw-animate-css';
-@import '../../../node_modules/@hotmart-org-ca/cosmos-ds-core/dist/tailwind-preset/v4/index.css';
-@source '../../../node_modules/@hotmart-org-ca/cosmos-ds-react';
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../../../node_modules/@tryingcli-org-ca/cosmos-ds-core/dist/tailwind-preset/v4/index.css";
+@source '../../../node_modules/@tryingcli-org-ca/cosmos-ds-react';
 
 /* Escaneia packages para classes Tailwind usadas em componentes */
 @source '../../../../packages/*/src/**/*.{ts,tsx,js,jsx}';
@@ -101,12 +103,13 @@ Packages não têm configuração Tailwind local, o que pode desabilitar o Intel
 
 ```css
 /* tailwind-intellisense.css (raiz) */
-@import 'tailwindcss';
-@import './node_modules/@hotmart-org-ca/cosmos-ds-core/dist/tailwind-preset/v4/index.css';
-@source './node_modules/@hotmart-org-ca/cosmos-ds-react';
+@import "tailwindcss";
+@import "./node_modules/@tryingcli-org-ca/cosmos-ds-core/dist/tailwind-preset/v4/index.css";
+@source './node_modules/@tryingcli-org-ca/cosmos-ds-react';
 ```
 
 Configure no settings.json do vscode:
+
 ```js
 {
   ...

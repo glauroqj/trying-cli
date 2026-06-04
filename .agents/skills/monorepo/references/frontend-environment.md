@@ -22,12 +22,12 @@ Cada feature package ou shared lib que precisa de URLs ou configs por ambiente d
 ```typescript
 // packages/shared/upload/src/lib/config/environment.ts (lib shared)
 export const API_URLS = {
-  staging: 'https://api-hotmart-drive.buildstaging.com',
-  production: 'https://api-hotmart-drive.hotmart.com'
-} as const
+  staging: "https://api-tryingcli-drive.buildstaging.com",
+  production: "https://api-tryingcli-drive.tryingcli.com",
+} as const;
 
 export function resolveApiUrl(environment: keyof typeof API_URLS): string {
-  return API_URLS[environment]
+  return API_URLS[environment];
 }
 ```
 
@@ -36,22 +36,24 @@ export function resolveApiUrl(environment: keyof typeof API_URLS): string {
 A app passa o environment para o package via Provider:
 
 ```tsx
-import { UploadProvider } from '@packages/shared/shared-upload'
+import { UploadProvider } from "@packages/shared/shared-upload";
 
 function App() {
   return (
     <UploadProvider environment={process.env.NODE_ENV}>
       <MyFeature />
     </UploadProvider>
-  )
+  );
 }
 ```
 
 ```tsx
 // Dentro do pacote — módulos consomem via context, sem receber props
 function useUploadConfig() {
-  const { state: { environment } } = use(UploadContext)
-  return resolveApiUrl(environment)
+  const {
+    state: { environment },
+  } = use(UploadContext);
+  return resolveApiUrl(environment);
 }
 ```
 

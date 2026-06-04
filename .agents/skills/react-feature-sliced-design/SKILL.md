@@ -1,7 +1,7 @@
 ---
 name: react-feature-sliced-design
 description: >
-  Adaptação do Feature-Sliced Design (FSD) para aplicações React/Next.js na Hotmart.
+  Adaptação do Feature-Sliced Design (FSD) para aplicações React/Next.js na tryingcli.
   Simplifica as 7 layers do FSD oficial em 3 layers (app → features → shared)
   mantendo os princípios de dependência unidirecional, slices por funcionalidade
   e segments por propósito técnico.
@@ -27,22 +27,23 @@ keywords:
   - solid
   - monorepo
   - spa
-  - hotmart
+  - tryingcli
 license: Apache-2.0
 metadata:
-  author: Hotmart
+  author: tryingcli
   version: "5.0"
 ---
 
 # React Architecture — Feature-Sliced Design
 
-Adaptação do [Feature-Sliced Design](https://feature-sliced.design/) (FSD) para aplicações React/Next.js na Hotmart. Simplifica as 7 layers do FSD oficial em 3 layers (`app → features → shared`) mantendo os princípios de dependência unidirecional, slices por funcionalidade e segments por propósito técnico. Cada feature é um módulo independente, encapsulado e portável. Aplicável a monorepos (`packages/feature-*`) e SPAs (`features/*`).
+Adaptação do [Feature-Sliced Design](https://feature-sliced.design/) (FSD) para aplicações React/Next.js na tryingcli. Simplifica as 7 layers do FSD oficial em 3 layers (`app → features → shared`) mantendo os princípios de dependência unidirecional, slices por funcionalidade e segments por propósito técnico. Cada feature é um módulo independente, encapsulado e portável. Aplicável a monorepos (`packages/feature-*`) e SPAs (`features/*`).
 
-> **Nota sobre nomenclatura:** O FSD oficial define 7 layers (app, pages, widgets, features, entities, shared, processes). Esta adaptação simplifica para 3 layers (app, features, shared) adequadas ao contexto frontend da Hotmart. Não confundir com Vertical Slice Architecture (Jimmy Bogard), que organiza por caso de uso individual sem hierarquia de layers.
+> **Nota sobre nomenclatura:** O FSD oficial define 7 layers (app, pages, widgets, features, entities, shared, processes). Esta adaptação simplifica para 3 layers (app, features, shared) adequadas ao contexto frontend da tryingcli. Não confundir com Vertical Slice Architecture (Jimmy Bogard), que organiza por caso de uso individual sem hierarquia de layers.
 
 ## Quando Aplicar
 
 Consulte esta skill ao:
+
 - Criar uma nova feature ou módulo
 - Definir estrutura de pastas e public API de uma feature
 - Estruturar comunicação entre features
@@ -53,13 +54,13 @@ Consulte esta skill ao:
 
 ## Categorias de Regras por Prioridade
 
-| Prioridade | Categoria | Impacto | Prefixo |
-|------------|-----------|---------|---------|
-| 1 | Princípios e Fundamentos | CRÍTICO | `arch-` |
-| 2 | Estrutura de Feature | CRÍTICO-ALTO | `feature-` |
-| 3 | Segments da Feature | CRÍTICO-ALTO | `segment-` |
-| 4 | Regras e Enforcement | CRÍTICO-ALTO | `rules-` |
-| 5 | Migração e Escala | ALTO-MÉDIO | `scale-` |
+| Prioridade | Categoria                | Impacto      | Prefixo    |
+| ---------- | ------------------------ | ------------ | ---------- |
+| 1          | Princípios e Fundamentos | CRÍTICO      | `arch-`    |
+| 2          | Estrutura de Feature     | CRÍTICO-ALTO | `feature-` |
+| 3          | Segments da Feature      | CRÍTICO-ALTO | `segment-` |
+| 4          | Regras e Enforcement     | CRÍTICO-ALTO | `rules-`   |
+| 5          | Migração e Escala        | ALTO-MÉDIO   | `scale-`   |
 
 ## Referência Rápida
 

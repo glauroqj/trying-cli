@@ -31,22 +31,23 @@ apps/
 Multi-stage build: copia o dist gerado pelo Nx e serve via OpenResty (nginx).
 
 ```dockerfile
-FROM 315120000506.dkr.ecr.us-east-1.amazonaws.com/hotmart/alpine/node/18 as builder
+FROM 315120000506.dkr.ecr.us-east-1.amazonaws.com/tryingcli/alpine/node/18 as builder
 
 WORKDIR /home/app
 COPY apps/<app-name>/dist build/
 
-FROM 315120000506.dkr.ecr.us-east-1.amazonaws.com/hotmart/alpine/openresty
+FROM 315120000506.dkr.ecr.us-east-1.amazonaws.com/tryingcli/alpine/openresty
 
 COPY --from=builder /home/app/build build/
 COPY apps/<app-name>/nginx.conf /etc/nginx/conf.d/default.conf
 ```
 
 Pontos de atenção:
+
 - O context do Docker build é a **raiz do repo**, então paths de `COPY` são relativos à raiz
 - O `outputPath` no `project.json` define onde o Nx gera o dist (ex: `apps/<app-name>/dist`)
 - O `COPY` do Dockerfile deve bater com esse path
-- Imagens base são do ECR da Hotmart — não usar imagens públicas
+- Imagens base são do ECR da tryingcli — não usar imagens públicas
 
 ### 2. feature.yml (Config Helm + Infra)
 
@@ -77,7 +78,7 @@ lb:
   type: nginx
   hosts:
     - host: <app>.buildstaging.com
-      paths: ['/']
+      paths: ["/"]
 
 podAnnotations:
   linkerd.io/inject: enabled
@@ -89,21 +90,21 @@ infra:
 
 Campos importantes:
 
-| Campo | Descrição |
-|-------|-----------|
-| `name` | Nome do **repositório** (não da app) — usado pelo base-module para identificar o serviço |
-| `branchRelease` | `true` para habilitar deploy isolado por branch |
-| `branchReleaseCollapseTime` | Dias até o deploy da branch ser removido automaticamente |
-| `containerPort` | Porta que o nginx escuta (deve bater com `nginx.conf`) |
-| `healthCheckPath` | Path do health check (deve bater com `nginx.conf`) |
-| `lb.hosts[].host` | Host base — o Helm prefixa com o nome sanitizado da branch |
+| Campo                       | Descrição                                                                                |
+| --------------------------- | ---------------------------------------------------------------------------------------- |
+| `name`                      | Nome do **repositório** (não da app) — usado pelo base-module para identificar o serviço |
+| `branchRelease`             | `true` para habilitar deploy isolado por branch                                          |
+| `branchReleaseCollapseTime` | Dias até o deploy da branch ser removido automaticamente                                 |
+| `containerPort`             | Porta que o nginx escuta (deve bater com `nginx.conf`)                                   |
+| `healthCheckPath`           | Path do health check (deve bater com `nginx.conf`)                                       |
+| `lb.hosts[].host`           | Host base — o Helm prefixa com o nome sanitizado da branch                               |
 
 URL gerada: `https://{branch-sanitizado}-{host}`. O branch é sanitizado (lowercase, apenas alfanuméricos). Exemplo com branch `feature/bwtest` e 3 apps:
 
-| App | Host no `feature.yml` | URL gerada |
-|-----|----------------------|------------|
-| `app` | `app.buildstaging.com` | `https://featurebwtest-app.buildstaging.com` |
-| `astrobox` | `astrobox.buildstaging.com` | `https://featurebwtest-astrobox.buildstaging.com` |
+| App         | Host no `feature.yml`        | URL gerada                                         |
+| ----------- | ---------------------------- | -------------------------------------------------- |
+| `app`       | `app.buildstaging.com`       | `https://featurebwtest-app.buildstaging.com`       |
+| `astrobox`  | `astrobox.buildstaging.com`  | `https://featurebwtest-astrobox.buildstaging.com`  |
 | `astroflow` | `astroflow.buildstaging.com` | `https://featurebwtest-astroflow.buildstaging.com` |
 
 ### 3. nginx.conf
@@ -170,6 +171,7 @@ API_URL_2=https://<api>.buildstaging.com
 ```
 
 Regras do env file de feature:
+
 - `APP_PORT` deve estar vazio — o Helm serve na porta padrão (443/80)
 - `APP_HOST` usa o host base de staging — o roteamento por branch é feito pelo Helm/ingress, não pela app
 - URLs de APIs devem apontar para o ambiente de **staging** (`buildstaging.com`)
@@ -201,8 +203,10 @@ O bundler (webpack, Rsbuild, Vite) carrega o env file baseado na env var `TARGET
 
 ```ts
 // webpack.config.ts
-const targetEnv = process.env.TARGET_ENV || 'development'
-require('dotenv').config({ path: path.resolve(__dirname, `env/.${targetEnv}`) })
+const targetEnv = process.env.TARGET_ENV || "development";
+require("dotenv").config({
+  path: path.resolve(__dirname, `env/.${targetEnv}`),
+});
 ```
 
 No CI, `TARGET_ENV=feature` é definido no step de build, fazendo o bundler carregar `env/.feature`.
@@ -219,11 +223,11 @@ No CI, `TARGET_ENV=feature` é definido no step de build, fazendo o bundler carr
 
 ### Erros Comuns
 
-| Erro | Causa | Solução |
-|------|-------|---------|
-| `cp: cannot stat 'feature.yml'` no base-module | `file` aponta para path errado | Usar `apps/${{ matrix.app }}/feature.yml` |
-| Docker build falha com "COPY failed" | `outputPath` não bate com o path no Dockerfile | Alinhar paths |
-| Health check falha | Porta do nginx ≠ `containerPort` do feature.yml | Usar mesma porta (8080) |
-| App carrega env errado | `TARGET_ENV` não definido no CI | Adicionar `env: TARGET_ENV: feature` no step de build |
-| URL da feature branch não funciona | `branchRelease: false` ou host errado no feature.yml | Verificar `branchRelease: true` e host |
-| App não builda com `build:feature` | Falta configuration `feature` no project.json | Adicionar configuration |
+| Erro                                           | Causa                                                | Solução                                               |
+| ---------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------- |
+| `cp: cannot stat 'feature.yml'` no base-module | `file` aponta para path errado                       | Usar `apps/${{ matrix.app }}/feature.yml`             |
+| Docker build falha com "COPY failed"           | `outputPath` não bate com o path no Dockerfile       | Alinhar paths                                         |
+| Health check falha                             | Porta do nginx ≠ `containerPort` do feature.yml      | Usar mesma porta (8080)                               |
+| App carrega env errado                         | `TARGET_ENV` não definido no CI                      | Adicionar `env: TARGET_ENV: feature` no step de build |
+| URL da feature branch não funciona             | `branchRelease: false` ou host errado no feature.yml | Verificar `branchRelease: true` e host                |
+| App não builda com `build:feature`             | Falta configuration `feature` no project.json        | Adicionar configuration                               |
